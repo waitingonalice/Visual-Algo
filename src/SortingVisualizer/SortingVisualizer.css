@@ -1,0 +1,17 @@
+.array-container {
+    position: absolute;
+    left: 120px;
+    top: 200px; 
+  }
+  
+  .array-bar {
+    width: 3px;
+    display: inline-block;
+    background-color: rgb(255, 123, 0);
+    margin: 10px 1px;
+  }
+
+  #button{
+      position: relative;
+      top: -170px;
+  }
