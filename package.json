@@ -2,7 +2,7 @@
   "name": "visual",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://waitingonalice.github.io/Visual-Algo",
+  "homepage": "http://waitingonalice.github.io/VisualAlgo",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
