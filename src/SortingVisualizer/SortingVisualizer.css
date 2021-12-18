@@ -1,5 +1,5 @@
 .array-container {
-  position: absolute;
+  position: relative;
   left: 100px;
   top: 200px;
 }
@@ -8,6 +8,6 @@
   display: inline-block;
   width: 3px;
   margin: 0px 1px;
-  background: orange;
+  
 
 }
