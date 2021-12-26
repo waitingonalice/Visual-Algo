@@ -47,12 +47,12 @@ function GenerateNewArray(){
             const animations = getBubbleSortAnimations(array);
             for(let i = 0; i<animations.length;i++){
                 const arrayBars = document.getElementsByClassName('array-bar');
-                const isColorChange = i%3 !== 2;
+                const isColorChange = animations[i][2];
                 if(isColorChange){     
                     const [barOneIdx, barTwoIdx] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     const barTwoStyle = arrayBars[barTwoIdx].style;
-                    const color = i%3 === 0 ? tertiaryColor : secondaryColor;
+                    const color = i%2 === 0 ? tertiaryColor : secondaryColor;
                     setTimeout(() => {
                         barOneStyle.backgroundColor = color;
                         barTwoStyle.backgroundColor = color;
