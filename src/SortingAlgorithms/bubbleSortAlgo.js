@@ -11,9 +11,10 @@ export function getBubbleSortAnimations(array){
 function bubbleSort(start,array,animations){
     let i = start;
     let sorted;
+    let round = 0;
         do{
             sorted = false;
-            for(let comparingElement = i; comparingElement < array.length-1; comparingElement++){
+            for(let comparingElement = i; comparingElement < array.length-1-round; comparingElement++){
                 animations.push([comparingElement, comparingElement+1,true]); 
                 animations.push([comparingElement, comparingElement+1,true]);
                 if(array[comparingElement]>array[comparingElement+1]){
@@ -26,7 +27,9 @@ function bubbleSort(start,array,animations){
                 
                 }   
             
-            }
-
+            }round++;
+           
+            
         }while(sorted);
+        
 }

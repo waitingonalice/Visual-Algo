@@ -4,15 +4,14 @@ import './SortingVisualizer.css';
 import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 
-const animationSpeedMs =3;
+const animationSpeedMs =20;
 
-const numberOfArrayBars = 100;
+const numberOfArrayBars = 50;
 
 const primaryColor = "orange";
 
-const secondaryColor = 'turquoise';
+const secondaryColor = "turquoise";
 
-const tertiaryColor = 'red';
 
 
 function GenerateNewArray(){
@@ -30,7 +29,7 @@ function GenerateNewArray(){
                 const [barOneIdx, barTwoIdx] = animations[i];
                 const barOneStyle = arrayBars[barOneIdx].style;
                 const barTwoStyle = arrayBars[barTwoIdx].style;
-                const color = i%3 === 0 ? tertiaryColor : secondaryColor;
+                const color = i%3 === 0 ? secondaryColor : primaryColor;
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -52,7 +51,7 @@ function GenerateNewArray(){
                     const [barOneIdx, barTwoIdx] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     const barTwoStyle = arrayBars[barTwoIdx].style;
-                    const color = i%2 === 0 ? tertiaryColor : secondaryColor;
+                    const color = i%2 === 0 ? secondaryColor : primaryColor;
                     setTimeout(() => {
                         barOneStyle.backgroundColor = color;
                         barTwoStyle.backgroundColor = color;
