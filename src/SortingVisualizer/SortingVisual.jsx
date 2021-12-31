@@ -4,9 +4,7 @@ import './SortingVisualizer.css';
 import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 
-const animationSpeedMs =20;
-
-const numberOfArrayBars = 50;
+const animationSpeedMs =10;
 
 const primaryColor = "orange";
 
@@ -29,7 +27,7 @@ function GenerateNewArray(){
                 const [barOneIdx, barTwoIdx] = animations[i];
                 const barOneStyle = arrayBars[barOneIdx].style;
                 const barTwoStyle = arrayBars[barTwoIdx].style;
-                const color = i%3 === 0 ? secondaryColor : primaryColor;
+                const color = i%3 === 0 ? primaryColor : secondaryColor;
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
@@ -51,7 +49,7 @@ function GenerateNewArray(){
                     const [barOneIdx, barTwoIdx] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     const barTwoStyle = arrayBars[barTwoIdx].style;
-                    const color = i%2 === 0 ? secondaryColor : primaryColor;
+                    const color = i%2 === 0 ? primaryColor : secondaryColor;
                     setTimeout(() => {
                         barOneStyle.backgroundColor = color;
                         barTwoStyle.backgroundColor = color;
@@ -68,19 +66,24 @@ function GenerateNewArray(){
         const handleReset = () => {
             console.log('reset')
             setArray(randomArray());
+        }
 
+        const refreshPage = () => {
+            window.location.reload(true);
         }
       
     return(
         <div>
+            
             <div className = "array-container">
-                <div className='buttons'>   
+            <div className="buttons">   
+                <button onClick = {() => refreshPage()}>Reset array</button>
                 <button onClick = {() => handleReset()}>Generate new Array</button>
                 <button onClick = {() => handleMergeSort()}>Merge Sort</button>
                 <button>Quick Sort</button>
                 <button>Insertion Sort</button>
                 <button onClick = {() => handleBubbleSort()}>Bubble Sort</button>
-                </div>
+            </div>
                 {array.map((value, idx) => (
                     <div className = "array-bar" 
                     key={idx}
@@ -97,8 +100,8 @@ function GenerateNewArray(){
 
 const randomArray = () => {
     const array = [];
-    for(let i = 0; i<numberOfArrayBars; i++){
-        array.push(randomIntFromInterval(5,730));
+    for(let i = 0; i<(window.innerWidth-300)/30; i++){
+        array.push(randomIntFromInterval(5,600));
     }
     return array;
 }

@@ -1,11 +1,12 @@
 .array-container {
   position: relative;
-  top:200px;
 }
 
 .array-bar {
+  position: relative;
+  top: 350px;
   display: inline-block;
   width: 30px;
   margin: 0px 1px;
- 
+  
 }

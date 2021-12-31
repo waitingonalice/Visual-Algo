@@ -10,26 +10,28 @@ export function getBubbleSortAnimations(array){
 
 function bubbleSort(start,array,animations){
     let i = start;
-    let sorted;
+    let j = array.length-1;
+    let sorted = false;
     let round = 0;
-        do{
-            sorted = false;
-            for(let comparingElement = i; comparingElement < array.length-1-round; comparingElement++){
-                animations.push([comparingElement, comparingElement+1,true]); 
-                animations.push([comparingElement, comparingElement+1,true]);
-                if(array[comparingElement]>array[comparingElement+1]){
-                    animations.push([comparingElement, array[comparingElement+1],false]);
-                    animations.push([comparingElement+1, array[comparingElement],false]);
-                    let temp = array[comparingElement];
-                    array[comparingElement] = array[comparingElement+1];
-                    array[comparingElement+1] = temp;
-                     sorted = true;
-                
-                }   
+    while(!sorted){
+        sorted = true;
+        for(let comparingElement = i; comparingElement < j-round; comparingElement++){
+            animations.push([comparingElement, comparingElement+1,true]); 
+            animations.push([comparingElement, comparingElement+1,true]);
             
-            }round++;
-           
+            if(array[comparingElement]>array[comparingElement+1]){
+                animations.push([comparingElement, array[comparingElement+1]]);
+                animations.push([comparingElement+1, array[comparingElement]]);
+                let temp = array[comparingElement];
+                array[comparingElement] = array[comparingElement+1];
+                array[comparingElement+1] = temp;
+                sorted = false;  
+            }   
             
-        }while(sorted);
+        }
         
+        animations.push([j-round]);
+        
+        round++;
+    }    
 }
