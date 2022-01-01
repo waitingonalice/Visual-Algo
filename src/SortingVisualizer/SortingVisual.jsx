@@ -3,8 +3,9 @@ import { useState, useEffect } from 'react';
 import './SortingVisualizer.css';
 import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
+import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 
-const animationSpeedMs =10;
+const animationSpeedMs = 15;
 
 const primaryColor = "orange";
 
@@ -61,7 +62,30 @@ function GenerateNewArray(){
                         barOneStyle.height = `${newHeight}px`;
                     }, i * animationSpeedMs);
                 }
-            }}    
+            }}
+        
+            const handleInsertionSort = () => {  
+                const animations = getInsertionSortAnimations(array);
+                for(let i = 0; i<animations.length;i++){
+                    const arrayBars = document.getElementsByClassName('array-bar');
+                    const isColorChange = animations[i][2];
+                    if(isColorChange){     
+                        const [barOneIdx, barTwoIdx] = animations[i];
+                        const barOneStyle = arrayBars[barOneIdx].style;
+                        const barTwoStyle = arrayBars[barTwoIdx].style;
+                        const color = i%2 === 0 ? primaryColor : secondaryColor;
+                        setTimeout(() => {
+                            barOneStyle.backgroundColor = color;
+                            barTwoStyle.backgroundColor = color;
+                        }, i * animationSpeedMs);
+                    }else{
+                        setTimeout(() => {
+                            const [barOneIdx, newHeight] = animations[i];
+                            const barOneStyle = arrayBars[barOneIdx].style;
+                            barOneStyle.height = `${newHeight}px`;
+                        }, i * animationSpeedMs);
+                    }
+                }}
 
         const handleReset = () => {
             console.log('reset')
@@ -71,7 +95,7 @@ function GenerateNewArray(){
         const refreshPage = () => {
             window.location.reload(true);
         }
-      
+    
     return(
         <div>
             
@@ -81,7 +105,7 @@ function GenerateNewArray(){
                 <button onClick = {() => handleReset()}>Generate new Array</button>
                 <button onClick = {() => handleMergeSort()}>Merge Sort</button>
                 <button>Quick Sort</button>
-                <button>Insertion Sort</button>
+                <button onClick={() => handleInsertionSort()}>Insertion Sort</button>
                 <button onClick = {() => handleBubbleSort()}>Bubble Sort</button>
             </div>
                 {array.map((value, idx) => (

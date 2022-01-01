@@ -6,11 +6,7 @@ import SortingVisual from './SortingVisualizer/SortingVisual';
 function App() {
   return (
     <div className="App">
-      <SortingVisual>
-
-      </SortingVisual>
-     
-       
+      <SortingVisual/>
     </div>
   );
 }

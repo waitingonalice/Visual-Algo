@@ -3,10 +3,14 @@ export function getBubbleSortAnimations(array){
     if(array.length <=1){
         return array;
     }
-    const supportArray = array.slice();
+    const supportArray = [...array]//clones array;
     bubbleSort(0,supportArray,animations);
     return animations;
 }
+
+//1. create array to hold values
+//2. while the array isnt sorted, iterate through array
+//3. if the value of index i > i+1, swap
 
 function bubbleSort(start,array,animations){
     let i = start;
@@ -17,8 +21,9 @@ function bubbleSort(start,array,animations){
         sorted = true;
         for(let comparingElement = i; comparingElement < j-round; comparingElement++){
             animations.push([comparingElement, comparingElement+1,true]); 
-            animations.push([comparingElement, comparingElement+1,true]);
-            
+            animations.push([comparingElement, comparingElement+1,true]); 
+            animations.push([comparingElement, comparingElement+1]); 
+            animations.push([comparingElement, comparingElement+1]);
             if(array[comparingElement]>array[comparingElement+1]){
                 animations.push([comparingElement, array[comparingElement+1]]);
                 animations.push([comparingElement+1, array[comparingElement]]);
@@ -29,9 +34,6 @@ function bubbleSort(start,array,animations){
             }   
             
         }
-        
-        animations.push([j-round]);
-        
         round++;
     }    
 }
