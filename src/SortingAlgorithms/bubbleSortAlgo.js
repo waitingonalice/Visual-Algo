@@ -22,8 +22,6 @@ function bubbleSort(start,array,animations){
         for(let comparingElement = i; comparingElement < j-round; comparingElement++){
             animations.push([comparingElement, comparingElement+1,true]); 
             animations.push([comparingElement, comparingElement+1,true]); 
-            animations.push([comparingElement, comparingElement+1]); 
-            animations.push([comparingElement, comparingElement+1]);
             if(array[comparingElement]>array[comparingElement+1]){
                 animations.push([comparingElement, array[comparingElement+1]]);
                 animations.push([comparingElement+1, array[comparingElement]]);
