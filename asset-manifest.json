@@ -1,22 +1,20 @@
 {
   "files": {
     "main.css": "/VisualAlgo/static/css/main.de551956.chunk.css",
-    "main.js": "/VisualAlgo/static/js/main.8fc019f6.chunk.js",
-    "main.js.map": "/VisualAlgo/static/js/main.8fc019f6.chunk.js.map",
-    "runtime-main.js": "/VisualAlgo/static/js/runtime-main.35cf4549.js",
-    "runtime-main.js.map": "/VisualAlgo/static/js/runtime-main.35cf4549.js.map",
+    "main.js": "/VisualAlgo/static/js/main.2687735c.chunk.js",
+    "main.js.map": "/VisualAlgo/static/js/main.2687735c.chunk.js.map",
+    "runtime-main.js": "/VisualAlgo/static/js/runtime-main.deb9c798.js",
+    "runtime-main.js.map": "/VisualAlgo/static/js/runtime-main.deb9c798.js.map",
     "static/js/2.d0c9cae2.chunk.js": "/VisualAlgo/static/js/2.d0c9cae2.chunk.js",
     "static/js/2.d0c9cae2.chunk.js.map": "/VisualAlgo/static/js/2.d0c9cae2.chunk.js.map",
-    "static/js/3.ea641eed.chunk.js": "/VisualAlgo/static/js/3.ea641eed.chunk.js",
-    "static/js/3.ea641eed.chunk.js.map": "/VisualAlgo/static/js/3.ea641eed.chunk.js.map",
     "index.html": "/VisualAlgo/index.html",
     "static/css/main.de551956.chunk.css.map": "/VisualAlgo/static/css/main.de551956.chunk.css.map",
     "static/js/2.d0c9cae2.chunk.js.LICENSE.txt": "/VisualAlgo/static/js/2.d0c9cae2.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.35cf4549.js",
+    "static/js/runtime-main.deb9c798.js",
     "static/js/2.d0c9cae2.chunk.js",
     "static/css/main.de551956.chunk.css",
-    "static/js/main.8fc019f6.chunk.js"
+    "static/js/main.2687735c.chunk.js"
   ]
 }
