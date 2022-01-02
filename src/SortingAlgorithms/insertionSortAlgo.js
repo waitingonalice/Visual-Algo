@@ -25,6 +25,7 @@ function insertionSort(array,animations){
             animations.push([container, container - 1]);
             animations.push([container, array[container -1]]);
             animations.push([container, array[container -1]]);
+            
             array[container] = array[container-1];
             container--;
             
