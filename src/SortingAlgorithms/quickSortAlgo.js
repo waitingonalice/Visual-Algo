@@ -7,7 +7,7 @@ export function getQuickSortAnimations(array){
     quickSort(supportArray,animations);
     return animations;
 }
-
+//test commit
 const quickSort = (array,animations) => {
 
 }
