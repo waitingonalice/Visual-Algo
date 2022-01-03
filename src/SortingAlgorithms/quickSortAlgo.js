@@ -8,6 +8,7 @@ export function getQuickSortAnimations(array){
     return animations;
 }
 
+//do quicksort algo here
 const quickSort = (array,animations) => {
 
 }
