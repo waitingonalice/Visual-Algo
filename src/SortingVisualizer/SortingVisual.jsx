@@ -4,6 +4,7 @@ import './SortingVisualizer.css';
 import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
+import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
 
 const animationSpeedMs = 15;
 
@@ -86,6 +87,29 @@ function GenerateNewArray(){
                         }, i * animationSpeedMs);
                     }
                 }}
+                
+                const handleQuickSort = () => {  
+                const animations = getQuickSortAnimations(array);
+                for(let i = 0; i<animations.length;i++){
+                    const arrayBars = document.getElementsByClassName('array-bar');
+                    const isColorChange = i%3 !== 2;
+                    if(isColorChange){     
+                        const [barOneIdx, barTwoIdx] = animations[i];
+                        const barOneStyle = arrayBars[barOneIdx].style;
+                        const barTwoStyle = arrayBars[barTwoIdx].style;
+                        const color = i%3 === 0 ? primaryColor : secondaryColor;
+                        setTimeout(() => {
+                            barOneStyle.backgroundColor = color;
+                            barTwoStyle.backgroundColor = color;
+                        }, i * animationSpeedMs);
+                    }else{
+                        setTimeout(() => {
+                            const [barOneIdx, newHeight] = animations[i];
+                            const barOneStyle = arrayBars[barOneIdx].style;
+                            barOneStyle.height = `${newHeight}px`;
+                        }, i * animationSpeedMs);
+                    }
+                }}
 
         const handleReset = () => {
             console.log('reset')
@@ -104,8 +128,8 @@ function GenerateNewArray(){
                 <button onClick = {() => refreshPage()}>Reset array</button>
                 <button onClick = {() => handleReset()}>Generate new Array</button>
                 <button onClick = {() => handleMergeSort()}>Merge Sort</button>
-                <button>Quick Sort</button>
-                <button onClick={() => handleInsertionSort()}>Insertion Sort</button>
+                <button onClick = {() => handleQuickSort()}>Quick Sort</button>
+                <button onClick = {() => handleInsertionSort()}>Insertion Sort</button>
                 <button onClick = {() => handleBubbleSort()}>Bubble Sort</button>
             </div>
                 {array.map((value, idx) => (
