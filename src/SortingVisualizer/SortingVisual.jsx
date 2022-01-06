@@ -107,7 +107,7 @@ function GenerateNewArray(){
                             const [barOneIdx,newHeight] = animations[i];
                             const barOneStyle = arrayBars[barOneIdx].style;
                             barOneStyle.height = `${newHeight}px`;
-                        }, i * animationSpeedMs);
+                        }, i * 30);
                     } 
                 }}
 
