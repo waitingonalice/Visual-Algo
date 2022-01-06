@@ -18,13 +18,15 @@ const quickSort = (low, high, array, animations) => {
 }
 
 const partition = (low, high, array, animations) => {
-    let i = low, pivot = array[high];
-    //at each iteration of j, 
+    let i = low, pivot = array[high], j = low;
+    //at each iteration of j,
     //swap j with i if j < pivot value, separating values smaller and larger than pivot
-    for (let j = low; j < array[high - 1]; j++){
-        animations.push([i, j]);
-        animations.push([i, j]);
+    for (j; j < array[high - 1]; j++) {
         if (array[j] < pivot) {
+            animations.push([i, array[j]]);
+            animations.push([i, array[j]]);
+            animations.push([j, array[i]]);
+            animations.push([j, array[i]]);
             let temp = array[i];
             array[i] = array[j];
             array[j] = temp;
@@ -33,6 +35,10 @@ const partition = (low, high, array, animations) => {
     }
 
     //main partition -- once j reaches array[high -1], swap pivot to value[i];
+    animations.push([i, array[high]]);
+    animations.push([i, array[high]]);
+    animations.push([high, array[i]]);
+    animations.push([high, array[i]]);
     let temp = array[i];
     array[i] = array[high];
     array[high] = temp;

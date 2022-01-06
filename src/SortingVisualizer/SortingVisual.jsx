@@ -92,7 +92,7 @@ function GenerateNewArray(){
                 const animations = getQuickSortAnimations(array);
                 for(let i = 0; i<animations.length;i++){
                     const arrayBars = document.getElementsByClassName('array-bar');
-                    const isColorChange = i%3 !== 2;
+                    const isColorChange = animations[i][2];
                     if(isColorChange){     
                         const [barOneIdx, barTwoIdx] = animations[i];
                         const barOneStyle = arrayBars[barOneIdx].style;
@@ -102,13 +102,13 @@ function GenerateNewArray(){
                             barOneStyle.backgroundColor = color;
                             barTwoStyle.backgroundColor = color;
                         }, i * animationSpeedMs);
-                    }else{
+                    }else {
                         setTimeout(() => {
-                            const [barOneIdx, newHeight] = animations[i];
+                            const [barOneIdx,newHeight] = animations[i];
                             const barOneStyle = arrayBars[barOneIdx].style;
                             barOneStyle.height = `${newHeight}px`;
                         }, i * animationSpeedMs);
-                    }
+                    } 
                 }}
 
         const handleReset = () => {
@@ -125,12 +125,13 @@ function GenerateNewArray(){
             
             <div className = "array-container">
             <div className="buttons">   
-                <button onClick = {() => refreshPage()}>Reset array</button>
                 <button onClick = {() => handleReset()}>Generate new Array</button>
+                <button onClick = {() => refreshPage()}>Reset array</button>
                 <button onClick = {() => handleMergeSort()}>Merge Sort</button>
                 <button onClick = {() => handleQuickSort()}>Quick Sort</button>
                 <button onClick = {() => handleInsertionSort()}>Insertion Sort</button>
                 <button onClick = {() => handleBubbleSort()}>Bubble Sort</button>
+                
             </div>
                 {array.map((value, idx) => (
                     <div className = "array-bar" 
