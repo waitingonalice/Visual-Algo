@@ -8,9 +8,9 @@ import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
 
 const animationSpeedMs = 8;
 
-const primaryColor = "#000080";
+const primaryColor = "CornflowerBlue";
 
-const secondaryColor = "green";
+const secondaryColor = "MediumSeaGreen";
 
 
 
@@ -97,7 +97,7 @@ function GenerateNewArray(){
                         const [barOneIdx, barTwoIdx] = animations[i];
                         const barOneStyle = arrayBars[barOneIdx].style;
                         const barTwoStyle = arrayBars[barTwoIdx].style;
-                        const color = i%3 === 0 ? primaryColor : secondaryColor;
+                        const color = i%3 === 0 ? secondaryColor : primaryColor;
                         setTimeout(() => {
                             barOneStyle.backgroundColor = color;
                             barTwoStyle.backgroundColor = color;

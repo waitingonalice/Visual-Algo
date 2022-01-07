@@ -1,13 +1,7 @@
 {
-	"folders": [
-		{
-			"path": ".."
-		},
-		{
-			"path": "..\\..\\..\\year 3\\mods\\neural networks\\NN cw1"
-		}
-	],
-	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": "app2"
-	}
+    "folders": [
+        {
+            "path": "."
+        }
+    ]
 }

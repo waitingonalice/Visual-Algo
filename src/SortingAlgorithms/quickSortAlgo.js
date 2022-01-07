@@ -21,35 +21,31 @@ const partition = (low, high, array, animations) => {
     let i = low, pivot = array[high], j = low;
     //at each iteration of j,
     //swap j with i if j < pivot value, separating values smaller and larger than pivot
+    
     for (j; j < array[high - 1]; j++) {
         if (array[j] < pivot) {
+            animations.push([i, j, true]);
+            animations.push([i, j, true]);
+            animations.push([j, i, true]);
+            animations.push([j, i, true]);
             animations.push([i, array[j]]);
             animations.push([j, array[i]]);
             let temp = array[i];
             array[i] = array[j];
             array[j] = temp;
             i++;
-            animations.push([i, j, true]);
-            animations.push([i, j, true]);
-            animations.push([j, i, true]);
-            animations.push([j, i, true]);
-            
         }
     }
 
     //main partition -- once j reaches array[high -1], swap pivot to value[i];
-    
+    animations.push([i, high, true]);
+    animations.push([i, high, true]);
+    animations.push([high, i, true]);
+    animations.push([high, i, true]);
     animations.push([i, array[high]]);
     animations.push([high, array[i]]);
-
     let temp = array[i];
     array[i] = array[high];
     array[high] = temp;
-    
-    animations.push([i, high, true]);
-    animations.push([i, high, true]);
-    animations.push([high, i, true]);
-    animations.push([high, i, true]);
-
     return i; 
 }
