@@ -19,18 +19,21 @@ function insertionSort(array,animations){
         let temp = array[i];
         let container = i;
         animations.push([container, container - 1,true]);
-        animations.push([container, container - 1,true]);
+        animations.push([container, container - 1, true]);
+        
         while(container > 0 && array[container - 1] > temp){
             animations.push([container, container - 1,true]);
             animations.push([container, container - 1,true]);
             animations.push([container, array[container -1]]);
-            animations.push([container, array[container -1]]);
+            animations.push([container, array[container - 1]]);
+            
             array[container] = array[container-1];
             container--;
             
         }
         animations.push([container, temp]);
         animations.push([container, temp]);
+        
         array[container] = temp;
     }
 

@@ -6,11 +6,11 @@ import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
 
-const animationSpeedMs = 15;
+const animationSpeedMs = 8;
 
-const primaryColor = "orange";
+const primaryColor = "#000080";
 
-const secondaryColor = "turquoise";
+const secondaryColor = "green";
 
 
 
@@ -107,7 +107,7 @@ function GenerateNewArray(){
                             const [barOneIdx,newHeight] = animations[i];
                             const barOneStyle = arrayBars[barOneIdx].style;
                             barOneStyle.height = `${newHeight}px`;
-                        }, i * 30);
+                        }, i * animationSpeedMs);
                     } 
                 }}
 
