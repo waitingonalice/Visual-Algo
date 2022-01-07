@@ -149,15 +149,15 @@ function GenerateNewArray(){
 
 const randomArray = () => {
     const array = [];
-    for(let i = 0; i<(window.innerWidth-300)/30; i++){
-        array.push(randomIntFromInterval(5,600));
+    for(let i = 0; i<(window.innerWidth-400)/30; i++){
+        array.push(randomIntFromInterval(10));
     }
     return array;
 }
 
 //FROM: https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
-function randomIntFromInterval(min,max) {
-    return Math.floor(Math.random()*(max-min+1)+min); 
+function randomIntFromInterval(min) {
+    return Math.floor(Math.random()*(window.innerHeight/2)+min); 
 }
 
 export default function SortingVisual(){
