@@ -1,14 +1,15 @@
 import React from 'react';
-import './App.css';
-//import SortingVisualizer from './SortingVisualizer/SortingVisualizer';
-import SortingVisual from './SortingVisualizer/SortingVisual';
+import {SortingVisual} from './components/SortingVisual';
 
-function App() {
+export default function App() {
+
+
+
   return (
-    <div className="App">
-      <SortingVisual/>
-    </div>
+    <>
+      <SortingVisual> </SortingVisual>
+    </>
   );
 }
 
-export default App;
+

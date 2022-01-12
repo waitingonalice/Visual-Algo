@@ -5,19 +5,23 @@ import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
+import { Menu, MenuButton, MenuList, MenuItem, Button } from '@chakra-ui/react';
+import { Box, Center, HStack } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 
 const animationSpeedMs = 8;
-
 const primaryColor = "CornflowerBlue";
-
 const secondaryColor = "MediumSeaGreen";
 
-
-
-function GenerateNewArray(){
+export function SortingVisual(){
     const[array, setArray] = useState(randomArray());
 
-    useEffect(() => console.log("mounted"),[]);
+    useEffect(() => console.log("mounted"), []);
+
+    const handleResize = () => { 
+        //handles the change of the array bars when window is resized
+    }
+
 
 //FROM: https://github.com/waitingonalice/Sorting-Visualizer-Tutorial/blob/master/src/sortingAlgorithms/sortingAlgorithms.js 
     const handleMergeSort = () => {  
@@ -111,59 +115,94 @@ function GenerateNewArray(){
                     } 
                 }}
 
+        
+  
+//style section    
+    const GenerateNewArrayButton = () => {
+        const refreshPage = () => {
+            window.location.reload(true);
+        }
         const handleReset = () => {
             console.log('reset')
             setArray(randomArray());
         }
-
-        const refreshPage = () => {
-            window.location.reload(true);
-        }
+        return (
+            <HStack spacing = '40px' >
+                <Box>
+                    <Button colorScheme='teal' size='md'
+                        onClick={() => handleReset()}>
+                        Generate new Array
+                    </Button>
+                </Box>
+               
+                <Box>
+                    <Button colorScheme='teal' size='md'
+                        onClick={() => refreshPage()}>
+                        Reset Array
+                    </Button>
+                </Box>
+            </HStack>
+        ); 
+    }
     
+    const DropDownMenu = () => {
+        return (
+            <Menu>
+                <MenuButton as={Button} rightIcon={<ChevronDownIcon />} colorScheme = 'teal'>
+                    Sorting Algorithms
+                </MenuButton>
+                <MenuList>
+                    <MenuItem onClick = {() => handleMergeSort()}>Merge Sort</MenuItem>
+                    <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
+                    <MenuItem onClick = {() => handleInsertionSort()}>Insertion Sort</MenuItem>
+                    <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
+                </MenuList>
+            </Menu>
+    
+        )
+    }
+
     return(
-        <div>
+        <Box>
+            <Center>
+                <HStack spacing = '40px'>
+                    <Box> 
+                        <GenerateNewArrayButton/>
+                    </Box>
+                    <Box>
+                        <DropDownMenu>
+                        </DropDownMenu>
+                    </Box>
+                </HStack>
+            </Center>
+
+            <Center>
+                <Box className="array-container">
+                    {array.map((value, idx) => (
+                        <Box className="array-bar" 
+                            key={idx}
+                            style={{backgroundColor: primaryColor, height: `${value}px`}}> 
+                        </Box>
+                    ))}
+                </Box>
+            </Center>
             
-            <div className = "array-container">
-            <div className="buttons">   
-                <button onClick = {() => handleReset()}>Generate new Array</button>
-                <button onClick = {() => refreshPage()}>Reset array</button>
-                <button onClick = {() => handleMergeSort()}>Merge Sort</button>
-                <button onClick = {() => handleQuickSort()}>Quick Sort</button>
-                <button onClick = {() => handleInsertionSort()}>Insertion Sort</button>
-                <button onClick = {() => handleBubbleSort()}>Bubble Sort</button>
-                
-            </div>
-                {array.map((value, idx) => (
-                    <div className = "array-bar" 
-                    key={idx}
-                    style={{backgroundColor: primaryColor, height: `${value}px`}}> 
-                    </div>
-                ))}
-            </div>
-                
-        </div>
+       </Box>
+
     )
 }
 
-
-
 const randomArray = () => {
     const array = [];
-    for(let i = 0; i<(window.innerWidth-400)/30; i++){
-        array.push(randomIntFromInterval(10));
+    for(let i = 0; i<(window.innerWidth-350)/30; i++){
+        array.push(randomIntFromInterval(10,window.innerHeight/2));
     }
     return array;
 }
 
 //FROM: https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
-function randomIntFromInterval(min) {
-    return Math.floor(Math.random()*(window.innerHeight/2)+min); 
+function randomIntFromInterval(min,max) {
+    return Math.floor(Math.random()*(max - min + 1)+min); 
 }
 
-export default function SortingVisual(){
-    return( 
-        <>
-            <GenerateNewArray></GenerateNewArray>
-        </>
-    );
-}
+export default SortingVisual;
