@@ -8,7 +8,7 @@ export function getQuickSortAnimations(array){
     return animations;
 }
 
-//do quicksort algo here
+//do quicksort with recursion 
 const quickSort = (low, high, array, animations) => {
     if (low < high) {
         let pi = partition(low, high , array, animations);

@@ -9,146 +9,146 @@ import { Menu, MenuButton, MenuList, MenuItem, Button } from '@chakra-ui/react';
 import { Box, Center, HStack } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
+
+
 const animationSpeedMs = 8;
 const primaryColor = "CornflowerBlue";
-const secondaryColor = "MediumSeaGreen";
+const secondaryColor = "Aquamarine";
 
-export function SortingVisual(){
-    const[array, setArray] = useState(randomArray());
+export function SortingVisual() {
+    const [array, setArray] = useState(randomArray());
 
     useEffect(() => console.log("mounted"), []);
 
-    const handleResize = () => { 
+    const handleResize = () => {
         //handles the change of the array bars when window is resized
     }
 
 
-//FROM: https://github.com/waitingonalice/Sorting-Visualizer-Tutorial/blob/master/src/sortingAlgorithms/sortingAlgorithms.js 
-    const handleMergeSort = () => {  
+    //FROM: https://github.com/waitingonalice/Sorting-Visualizer-Tutorial/blob/master/src/sortingAlgorithms/sortingAlgorithms.js 
+    const handleMergeSort = () => {
         const animations = getMergeSortAnimations(array);
-        for(let i = 0; i<animations.length;i++){
+        for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
-            const isColorChange = i%3 !== 2;
-            if(isColorChange){     
+            const isColorChange = i % 3 !== 2;
+            if (isColorChange) {
                 const [barOneIdx, barTwoIdx] = animations[i];
                 const barOneStyle = arrayBars[barOneIdx].style;
                 const barTwoStyle = arrayBars[barTwoIdx].style;
-                const color = i%3 === 0 ? primaryColor : secondaryColor;
+                const color = i % 3 === 0 ? secondaryColor : primaryColor;
                 setTimeout(() => {
                     barOneStyle.backgroundColor = color;
                     barTwoStyle.backgroundColor = color;
                 }, i * animationSpeedMs);
-            }else{
+            } else {
                 setTimeout(() => {
                     const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
                     barOneStyle.height = `${newHeight}px`;
                 }, i * animationSpeedMs);
             }
-        }}
-        const handleBubbleSort = () => {  
-            const animations = getBubbleSortAnimations(array);
-            for(let i = 0; i<animations.length;i++){
-                const arrayBars = document.getElementsByClassName('array-bar');
-                const isColorChange = animations[i][2];
-                if(isColorChange){     
-                    const [barOneIdx, barTwoIdx] = animations[i];
+        }
+    }
+    const handleBubbleSort = () => {
+        const animations = getBubbleSortAnimations(array);
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const isColorChange = animations[i][2];
+            if (isColorChange) {
+                const [barOneIdx, barTwoIdx] = animations[i];
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const color = i % 2 === 0 ? secondaryColor : primaryColor;
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * animationSpeedMs);
+            } else {
+                setTimeout(() => {
+                    const [barOneIdx, newHeight] = animations[i];
                     const barOneStyle = arrayBars[barOneIdx].style;
-                    const barTwoStyle = arrayBars[barTwoIdx].style;
-                    const color = i%2 === 0 ? primaryColor : secondaryColor;
-                    setTimeout(() => {
-                        barOneStyle.backgroundColor = color;
-                        barTwoStyle.backgroundColor = color;
-                    }, i * animationSpeedMs);
-                }else{
-                    setTimeout(() => {
-                        const [barOneIdx, newHeight] = animations[i];
-                        const barOneStyle = arrayBars[barOneIdx].style;
-                        barOneStyle.height = `${newHeight}px`;
-                    }, i * animationSpeedMs);
-                }
-            }}
+                    barOneStyle.height = `${newHeight}px`;
+                }, i * animationSpeedMs);
+            }
+        }
+    }
         
-            const handleInsertionSort = () => {  
-                const animations = getInsertionSortAnimations(array);
-                for(let i = 0; i<animations.length;i++){
-                    const arrayBars = document.getElementsByClassName('array-bar');
-                    const isColorChange = animations[i][2];
-                    if(isColorChange){     
-                        const [barOneIdx, barTwoIdx] = animations[i];
-                        const barOneStyle = arrayBars[barOneIdx].style;
-                        const barTwoStyle = arrayBars[barTwoIdx].style;
-                        const color = i%2 === 0 ? primaryColor : secondaryColor;
-                        setTimeout(() => {
-                            barOneStyle.backgroundColor = color;
-                            barTwoStyle.backgroundColor = color;
-                        }, i * animationSpeedMs);
-                    }else{
-                        setTimeout(() => {
-                            const [barOneIdx, newHeight] = animations[i];
-                            const barOneStyle = arrayBars[barOneIdx].style;
-                            barOneStyle.height = `${newHeight}px`;
-                        }, i * animationSpeedMs);
-                    }
-                }}
+    const handleInsertionSort = () => {
+        const animations = getInsertionSortAnimations(array);
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const isColorChange = animations[i][2];
+            if (isColorChange) {
+                const [barOneIdx, barTwoIdx] = animations[i];
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const color = i % 2 === 0 ? secondaryColor : primaryColor;
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * animationSpeedMs);
+            } else {
+                setTimeout(() => {
+                    const [barOneIdx, newHeight] = animations[i];
+                    const barOneStyle = arrayBars[barOneIdx].style;
+                    barOneStyle.height = `${newHeight}px`;
+                }, i * animationSpeedMs);
+            }
+        }
+    }
                 
-                const handleQuickSort = () => {  
-                const animations = getQuickSortAnimations(array);
-                for(let i = 0; i<animations.length;i++){
-                    const arrayBars = document.getElementsByClassName('array-bar');
-                    const isColorChange = animations[i][2];
-                    if(isColorChange){     
-                        const [barOneIdx, barTwoIdx] = animations[i];
-                        const barOneStyle = arrayBars[barOneIdx].style;
-                        const barTwoStyle = arrayBars[barTwoIdx].style;
-                        const color = i%3 === 0 ? secondaryColor : primaryColor;
-                        setTimeout(() => {
-                            barOneStyle.backgroundColor = color;
-                            barTwoStyle.backgroundColor = color;
-                        }, i * animationSpeedMs);
-                    }else {
-                        setTimeout(() => {
-                            const [barOneIdx,newHeight] = animations[i];
-                            const barOneStyle = arrayBars[barOneIdx].style;
-                            barOneStyle.height = `${newHeight}px`;
-                        }, i * animationSpeedMs);
-                    } 
-                }}
-
-        
-  
-//style section    
-    const GenerateNewArrayButton = () => {
-        const refreshPage = () => {
-            window.location.reload(true);
+    const handleQuickSort = () => {
+        const animations = getQuickSortAnimations(array);
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const isColorChange = animations[i][2];
+            if (isColorChange) {
+                const [barOneIdx, barTwoIdx] = animations[i];
+                const barOneStyle = arrayBars[barOneIdx].style;
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const color = i % 3 === 0 ? primaryColor : secondaryColor;
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * animationSpeedMs);
+            } else {
+                setTimeout(() => {
+                    const [barOneIdx, newHeight] = animations[i];
+                    const barOneStyle = arrayBars[barOneIdx].style;
+                    barOneStyle.height = `${newHeight}px`;
+                }, i * animationSpeedMs);
+            }
         }
-        const handleReset = () => {
-            console.log('reset')
-            setArray(randomArray());
-        }
+    }     
+    const refreshPage = () => {
+        window.location.reload(true);
+    }
+    const handleReset = () => {
+        console.log('reset')
+        setArray(randomArray());
+    }
+    //style section
+    
+    const GenerateNewArrayButton = (generateProp) => {
         return (
-            <HStack spacing = '40px' >
-                <Box>
-                    <Button colorScheme='teal' size='md'
-                        onClick={() => handleReset()}>
-                        Generate new Array
-                    </Button>
-                </Box>
-               
-                <Box>
-                    <Button colorScheme='teal' size='md'
-                        onClick={() => refreshPage()}>
-                        Reset Array
-                    </Button>
-                </Box>
-            </HStack>
+            <Button colorScheme='gray' size='md' onClick={generateProp.onClick}>
+               Generate new array
+            </Button>
+        ); 
+    }
+
+     const ResetArrayButton = (generateProp) => {
+        return (
+            <Button colorScheme='gray' size='md' onClick={generateProp.onClick}>
+               Reset array
+            </Button>
         ); 
     }
     
     const DropDownMenu = () => {
         return (
             <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />} colorScheme = 'teal'>
+                <MenuButton as={Button} rightIcon={<ChevronDownIcon />} colorScheme = 'gray'>
                     Sorting Algorithms
                 </MenuButton>
                 <MenuList>
@@ -164,20 +164,24 @@ export function SortingVisual(){
 
     return(
         <Box>
+            <Box display ='flex' pt ='10'>
+                <Center>
+                    <HStack spacing = '40px'>
+                        <Box> 
+                            <GenerateNewArrayButton onClick={handleReset}/>
+                        </Box>
+                        <Box>
+                            <ResetArrayButton onClick = {refreshPage}/>
+                        </Box>
+                        <Box>
+                            <DropDownMenu/>
+                        </Box>
+                    </HStack>
+                </Center> 
+            </Box>
+              
             <Center>
-                <HStack spacing = '40px'>
-                    <Box> 
-                        <GenerateNewArrayButton/>
-                    </Box>
-                    <Box>
-                        <DropDownMenu>
-                        </DropDownMenu>
-                    </Box>
-                </HStack>
-            </Center>
-
-            <Center>
-                <Box className="array-container">
+                <Box pos = "absolute" top = "500">
                     {array.map((value, idx) => (
                         <Box className="array-bar" 
                             key={idx}
@@ -186,15 +190,15 @@ export function SortingVisual(){
                     ))}
                 </Box>
             </Center>
-            
-       </Box>
+        </Box>
 
     )
 }
 
+//reusable code 
 const randomArray = () => {
     const array = [];
-    for(let i = 0; i<(window.innerWidth-350)/30; i++){
+    for(let i = 0; i<(window.innerWidth-350)/20; i++){
         array.push(randomIntFromInterval(10,window.innerHeight/2));
     }
     return array;
