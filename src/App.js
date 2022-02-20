@@ -1,25 +1,13 @@
 import React from 'react';
 import { SortingVisual } from './components/SortingVisual';
-import { VStack, Heading, Button, IconButton, useColorMode, Box, HStack, Center } from '@chakra-ui/react'
+import { VStack, Heading, IconButton, useColorMode, Box} from '@chakra-ui/react'
 import { FaSun, FaMoon } from 'react-icons/fa'
-import { IoMdHelp } from 'react-icons/io'
+import { HelpModal } from './components/Modal'
+
 
 export default function App() {
   const { colorMode, toggleColorMode } = useColorMode();
-
-  function HelpModal() {
-    return (
-      <>
-        <Button leftIcon={<IoMdHelp />}
-          colorScheme='gray'
-          size='sm'
-          variant='solid' >
-          Help
-        </Button>
-
-      </> 
-    )
-  }
+  
 
   function ColorMode() {
     return (
@@ -32,11 +20,11 @@ export default function App() {
         />
     );
   }
-
+                                                                                                                                                                                                                                                                                                                                                                 
   return (
     <>
       <Box className='topLayer' p={4}>
-        <HelpModal></HelpModal>
+        <HelpModal/>
         <ColorMode />
       </Box>
       
