@@ -4,7 +4,7 @@ import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
-import { MenuItem,Box, Center, HStack } from '@chakra-ui/react';
+import { MenuItem,Box, Center, HStack, VStack } from '@chakra-ui/react';
 import { GenerateButton } from './Button.jsx';
 import { SortDropDownMenu } from './DropDownMenu.jsx';
 import './SortingVisualizer.css';
@@ -126,9 +126,9 @@ export function SortingVisual() {
     }
 
     return(
-        <Box>
-            <Box display ='flex' pt ='10'>
-                <Center>
+        <>
+            <Box pt ='10'>
+                <VStack>
                     <HStack spacing = '40px'>
                         <Box> 
                             <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
@@ -145,20 +145,18 @@ export function SortingVisual() {
                             </SortDropDownMenu>   
                         </Box>
                     </HStack>
-                </Center> 
+            
+                    <Box pos = "relative" top = "300">
+                        {array.map((value, idx) => (
+                            <Box className="array-bar" 
+                                key={idx}
+                                style={{backgroundColor: primaryColor, height: `${value}px`}}> 
+                            </Box>
+                        ))}
+                    </Box>
+                </VStack>
             </Box>
-              
-            <Center>
-                <Box pos = "absolute" top = "400">
-                    {array.map((value, idx) => (
-                        <Box className="array-bar" 
-                            key={idx}
-                            style={{backgroundColor: primaryColor, height: `${value}px`}}> 
-                        </Box>
-                    ))}
-                </Box>
-            </Center>
-        </Box>
+        </>
 
     )
 }
