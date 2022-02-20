@@ -1,15 +1,13 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import './SortingVisualizer.css';
 import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
-import { Menu, MenuButton, MenuList, MenuItem, Button } from '@chakra-ui/react';
-import { Box, Center, HStack } from '@chakra-ui/react';
-import { ChevronDownIcon } from '@chakra-ui/icons';
-
-
+import { MenuItem,Box, Center, HStack } from '@chakra-ui/react';
+import { GenerateButton } from './Button.jsx';
+import { SortDropDownMenu } from './DropDownMenu.jsx';
+import './SortingVisualizer.css';
 
 const animationSpeedMs = 8;
 const primaryColor = "CornflowerBlue";
@@ -21,9 +19,8 @@ export function SortingVisual() {
     useEffect(() => console.log("mounted"), []);
 
     const handleResize = () => {
-        //handles the change of the array bars when window is resized
+    //handles the change of the array bars when window is resized
     }
-
 
     //FROM: https://github.com/waitingonalice/Sorting-Visualizer-Tutorial/blob/master/src/sortingAlgorithms/sortingAlgorithms.js 
     const handleMergeSort = () => {
@@ -127,40 +124,6 @@ export function SortingVisual() {
         console.log('reset')
         setArray(randomArray());
     }
-    //style section
-    
-    const GenerateNewArrayButton = (generateProp) => {
-        return (
-            <Button colorScheme='gray' size='md' onClick={generateProp.onClick}>
-               Generate new array
-            </Button>
-        ); 
-    }
-
-     const ResetArrayButton = (generateProp) => {
-        return (
-            <Button colorScheme='gray' size='md' onClick={generateProp.onClick}>
-               Reset array
-            </Button>
-        ); 
-    }
-    
-    const DropDownMenu = () => {
-        return (
-            <Menu>
-                <MenuButton as={Button} rightIcon={<ChevronDownIcon />} colorScheme = 'gray'>
-                    Sorting Algorithms
-                </MenuButton>
-                <MenuList>
-                    <MenuItem onClick = {() => handleMergeSort()}>Merge Sort</MenuItem>
-                    <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
-                    <MenuItem onClick = {() => handleInsertionSort()}>Insertion Sort</MenuItem>
-                    <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
-                </MenuList>
-            </Menu>
-    
-        )
-    }
 
     return(
         <Box>
@@ -168,20 +131,25 @@ export function SortingVisual() {
                 <Center>
                     <HStack spacing = '40px'>
                         <Box> 
-                            <GenerateNewArrayButton onClick={handleReset}/>
+                            <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
                         </Box>
                         <Box>
-                            <ResetArrayButton onClick = {refreshPage}/>
+                             <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reset Array</GenerateButton>
                         </Box>
                         <Box>
-                            <DropDownMenu/>
+                            <SortDropDownMenu>
+                            <MenuItem onClick={() => handleMergeSort()}> Merge Sort</MenuItem>
+                            <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
+                            <MenuItem onClick = {() => handleInsertionSort()}>Insertion Sort</MenuItem>
+                            <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
+                            </SortDropDownMenu>   
                         </Box>
                     </HStack>
                 </Center> 
             </Box>
               
             <Center>
-                <Box pos = "absolute" top = "500">
+                <Box pos = "absolute" top = "400">
                     {array.map((value, idx) => (
                         <Box className="array-bar" 
                             key={idx}
@@ -195,7 +163,6 @@ export function SortingVisual() {
     )
 }
 
-//reusable code 
 const randomArray = () => {
     const array = [];
     for(let i = 0; i<(window.innerWidth-350)/20; i++){
@@ -204,9 +171,10 @@ const randomArray = () => {
     return array;
 }
 
-//FROM: https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
+    //FROM: https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
 function randomIntFromInterval(min,max) {
     return Math.floor(Math.random()*(max - min + 1)+min); 
 }
+
 
 export default SortingVisual;
