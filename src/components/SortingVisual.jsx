@@ -4,10 +4,11 @@ import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
-import { MenuItem,Box, Center, HStack, VStack } from '@chakra-ui/react';
+import { MenuItem,Box, HStack, VStack } from '@chakra-ui/react';
 import { GenerateButton } from './Button.jsx';
 import { SortDropDownMenu } from './DropDownMenu.jsx';
 import './SortingVisualizer.css';
+import { AlgoModal } from './Modal.jsx';
 
 const animationSpeedMs = 8;
 const primaryColor = "CornflowerBlue";
@@ -129,24 +130,21 @@ export function SortingVisual() {
         <>
             <Box pt ='10'>
                 <VStack>
-                    <HStack spacing = '40px'>
-                        <Box> 
-                            <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
-                        </Box>
-                        <Box>
-                             <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reset Array</GenerateButton>
-                        </Box>
-                        <Box>
-                            <SortDropDownMenu>
+                    <HStack spacing = '30px'>
+                       
+                        <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
+                        <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reset Array</GenerateButton>
+                        <SortDropDownMenu>
                             <MenuItem onClick={() => handleMergeSort()}> Merge Sort</MenuItem>
                             <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
                             <MenuItem onClick = {() => handleInsertionSort()}>Insertion Sort</MenuItem>
                             <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
-                            </SortDropDownMenu>   
-                        </Box>
+                        </SortDropDownMenu>   
+                        
+                        <AlgoModal/>
                     </HStack>
-            
-                    <Box pos = "relative" top = "300">
+
+                    <Box pos = "relative" top = "350">
                         {array.map((value, idx) => (
                             <Box className="array-bar" 
                                 key={idx}

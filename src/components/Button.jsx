@@ -3,8 +3,14 @@ import { Button } from '@chakra-ui/react';
 
 export function GenerateButton(props) {
     const myClass = `button ${props.type}`
-     return (
-         <Button className = {myClass} onClick={props.handleClick} colorScheme='gray' size='md'>
+    return (
+        <Button
+            className={myClass}
+            onClick={props.handleClick}
+            colorScheme='gray' size='md'
+            leftIcon={props.leftIcon}
+            disabled = {props.disabled}
+        >
             {props.children}
         </Button>
         ); 
