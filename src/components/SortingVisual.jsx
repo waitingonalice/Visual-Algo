@@ -17,7 +17,8 @@ const secondaryColor = "Aquamarine";
 export function SortingVisual() {
     const [array, setArray] = useState(randomArray());
 
-    //eventlistener function that controls size of array by rerendering on every state change based on window width
+    //function that controls size of array based on window event listener
+    //effect invokes handleResize() once after every render to DOM 
     useEffect(() => {
         function handleResize() {
             const numBars = array
@@ -31,7 +32,7 @@ export function SortingVisual() {
                
             }
         }
-        window.addEventListener("resize", handleResize)
+        window.addEventListener('resize', handleResize)
         return () => window.removeEventListener("resize", handleResize)
     }, [])
       
