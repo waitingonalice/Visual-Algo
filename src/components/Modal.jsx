@@ -25,36 +25,44 @@ export function HelpModal() {
 						</Box>
 					 
 						<Box mb="1rem">
-							Visual Algo is a project that enables learners to interact with algorithms through visual animations instead of just reading about them. 
+							Visual Algo is an interactive web application that enables learners to interact with algorithms through visual animations instead of just reading about them. 
 						</Box>
 						<Text fontWeight={"bold"} fontSize={20} mb = '0.5rem'>Site Guide</Text>
 						<Text fontWeight='bold'>
 							Generate New Array 
 						</Text>
-							<Box mb="1rem">
-								Randomly generates new dataset.                                                                                                                                                                                  
-							</Box>
+						<Box mb="1rem">
+							Randomly generates new dataset.                                                                                                                                                                                  
+						</Box>
 						 
 						<Text fontWeight='bold'>
 							Reset Array
 						</Text>
-							<Box mb="1rem">
-								Refreshes the page to stop the algorithm from running.
-							</Box>
+						<Box mb="1rem">
+							Refreshes the page to stop the algorithm from running.
+						</Box>
 						 
 						<Text fontWeight='bold'>
 							Sorting Algorithms
 						</Text>
-							<Box mb="1rem">
-								Shows a list of sorting algorithms, pressing any algorithm in the list will trigger the algorithm to start running.
-							</Box>
-						 
+						<Box mb="1rem">
+							Shows a list of sorting algorithms, pressing any algorithm in the list will trigger the algorithm to start running.
+						</Box>
+						<Text fontWeight='bold'>
+							Algorithm tips
+						</Text>
+						<Box mb="1rem">
+							Provides a brief description of how every algorithm functions and its uses.
+						</Box>
+						
 						<Text fontWeight='bold'>
 							Test Your Knowledge
 						</Text>
-							<Box mb="1rem">
-								Redirects to quiz page.
-							</Box>
+						<Box mb="1rem">
+							Redirects to quiz page.
+						</Box>
+						
+
 					</ModalBody>
 					<ModalFooter justifyContent={'center'}>
 						<GenerateButton myClass = 'closeBtn' handleClick={onClose}>

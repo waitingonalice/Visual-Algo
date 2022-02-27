@@ -1,4 +1,5 @@
 import React from 'react';
+import './SortingVisualizer.css';
 import { useState, useEffect } from 'react';
 import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
@@ -7,7 +8,6 @@ import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
 import { MenuItem,Box, HStack, VStack } from '@chakra-ui/react';
 import { GenerateButton } from './Button.jsx';
 import { SortDropDownMenu } from './DropDownMenu.jsx';
-import './SortingVisualizer.css';
 import { AlgoModal } from './Modal.jsx';
 
 const animationSpeedMs = 8;
@@ -17,12 +17,24 @@ const secondaryColor = "Aquamarine";
 export function SortingVisual() {
     const [array, setArray] = useState(randomArray());
 
-    useEffect(() => console.log("mounted"), []);
-
-    const handleResize = () => {
-    //handles the change of the array bars when window is resized
-    }
-
+    //eventlistener function that controls size of array by rerendering on every state change based on window width
+    useEffect(() => {
+        function handleResize() {
+            const numBars = array
+            if (window.innerWidth/25<=numBars.length-1) {
+                numBars.pop();
+                setArray([...numBars])
+                
+            } else if (window.innerWidth / 15 >= numBars.length - 1) {
+                numBars.push(randomIntFromInterval(10, window.innerHeight / 2))
+                setArray([...numBars])
+               
+            }
+        }
+        window.addEventListener("resize", handleResize)
+        return () => window.removeEventListener("resize", handleResize)
+    }, [])
+      
     //FROM: https://github.com/waitingonalice/Sorting-Visualizer-Tutorial/blob/master/src/sortingAlgorithms/sortingAlgorithms.js 
     const handleMergeSort = () => {
         const animations = getMergeSortAnimations(array);
@@ -131,7 +143,6 @@ export function SortingVisual() {
             <Box pt ='10'>
                 <VStack>
                     <HStack spacing = '30px'>
-                       
                         <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
                         <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reset Array</GenerateButton>
                         <SortDropDownMenu>
@@ -139,9 +150,8 @@ export function SortingVisual() {
                             <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
                             <MenuItem onClick = {() => handleInsertionSort()}>Insertion Sort</MenuItem>
                             <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
-                        </SortDropDownMenu>   
-                        
-                        <AlgoModal/>
+                        </SortDropDownMenu>
+                        <AlgoModal />
                     </HStack>
 
                     <Box pos = "relative" top = "350">
@@ -161,13 +171,13 @@ export function SortingVisual() {
 
 const randomArray = () => {
     const array = [];
-    for(let i = 0; i<(window.innerWidth-350)/20; i++){
+    for(let i = 0; i<(window.innerWidth-500)/16; i++){
         array.push(randomIntFromInterval(10,window.innerHeight/2));
     }
     return array;
 }
 
-    //FROM: https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
+//FROM: https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
 function randomIntFromInterval(min,max) {
     return Math.floor(Math.random()*(max - min + 1)+min); 
 }
