@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/VisualAlgo/static/css/main.3e89144a.chunk.css",
-    "main.js": "/VisualAlgo/static/js/main.9866e004.chunk.js",
-    "main.js.map": "/VisualAlgo/static/js/main.9866e004.chunk.js.map",
+    "main.js": "/VisualAlgo/static/js/main.4eb25f96.chunk.js",
+    "main.js.map": "/VisualAlgo/static/js/main.4eb25f96.chunk.js.map",
     "runtime-main.js": "/VisualAlgo/static/js/runtime-main.deb9c798.js",
     "runtime-main.js.map": "/VisualAlgo/static/js/runtime-main.deb9c798.js.map",
     "static/js/2.922e0538.chunk.js": "/VisualAlgo/static/js/2.922e0538.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.deb9c798.js",
     "static/js/2.922e0538.chunk.js",
     "static/css/main.3e89144a.chunk.css",
-    "static/js/main.9866e004.chunk.js"
+    "static/js/main.4eb25f96.chunk.js"
   ]
 }
