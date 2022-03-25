@@ -9,8 +9,8 @@ import { MenuItem,Box, HStack, VStack } from '@chakra-ui/react';
 import { GenerateButton } from './Button.jsx';
 import { SortDropDownMenu } from './DropDownMenu.jsx';
 import { AlgoModal } from './Modal.jsx';
-
-const animationSpeedMs = 8;
+import {MdQuiz} from "react-icons/md"
+const animationSpeedMs = 7;
 const primaryColor = "CornflowerBlue";
 const secondaryColor = "Aquamarine";
 
@@ -26,7 +26,7 @@ export function SortingVisual() {
                 numBars.pop();
                 setArray([...numBars])
                 
-            } else if (window.innerWidth / 15 >= numBars.length - 1) {
+            } else if (window.innerWidth / 10 >= numBars.length - 1) {
                 numBars.push(randomIntFromInterval(10, window.innerHeight / 2))
                 setArray([...numBars])
                
@@ -143,9 +143,11 @@ export function SortingVisual() {
         <>
             <Box pt ='10'>
                 <VStack>
-                    <HStack spacing = '30px'>
+                    <HStack spacing='30px'>
+                        
+                        <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reload Page</GenerateButton>
                         <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
-                        <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reset Array</GenerateButton>
+                        
                         <SortDropDownMenu>
                             <MenuItem onClick={() => handleMergeSort()}> Merge Sort</MenuItem>
                             <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
@@ -153,9 +155,10 @@ export function SortingVisual() {
                             <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
                         </SortDropDownMenu>
                         <AlgoModal />
+                        <GenerateButton leftIcon = {<MdQuiz/>}>Test Your Knowledge</GenerateButton>
                     </HStack>
 
-                    <Box pos = "relative" top = "350">
+                    <Box pos = "relative" top = "200">
                         {array.map((value, idx) => (
                             <Box className="array-bar" 
                                 key={idx}

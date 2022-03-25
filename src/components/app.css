@@ -1,0 +1,28 @@
+/* .main {
+    display: flex;
+} */
+.header {
+    padding: 16px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+}
+.links {
+    display: flex;
+    font-weight: bold;
+}
+#github-link {
+    display: flex;
+    padding-left: 4px;
+}
+#gh-icon {
+    padding-left: 2px;
+}
+.footer {
+    position: relative;
+    bottom: -250px;
+    left: 0;
+    right: 0;
+}

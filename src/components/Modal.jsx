@@ -36,7 +36,7 @@ export function HelpModal() {
 						</Box>
 						 
 						<Text fontWeight='bold'>
-							Reset Array
+							Reload Page
 						</Text>
 						<Box mb="1rem">
 							Refreshes the page to stop the algorithm from running.
@@ -82,20 +82,20 @@ export function AlgoModal() {
 	const algoList = [
 		{
 			title: 'Merge Sort',
-			description: 'lorem bla bla'
+			description: 'TBC'
 		},
 		{
 			title: 'Quick Sort',
-			description: 'ipsum bla bla'
+			description: 'TBC'
 		},
 		{
 			title: 'Bubble sort',
-			description: 'morem bla bla'
+			description: 'TBC'
 		
 		},
 		{
 			title: 'Insertion sort',
-			description: 'tanum bla bla'
+			description: 'TBC'
 		}
 	]
 	let hasPrev = index > 0
