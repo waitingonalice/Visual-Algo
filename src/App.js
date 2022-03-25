@@ -1,5 +1,5 @@
 import React from 'react';
-import "./components/app.css"
+import "./app.css"
 import { SortingVisual } from './components/SortingVisual';
 import { VStack, Heading, IconButton, useColorMode, Box, Center} from '@chakra-ui/react'
 import { FaSun, FaMoon } from 'react-icons/fa'
