@@ -9,13 +9,14 @@ import {FaRegLightbulb} from "react-icons/fa"
 
 export function HelpModal() {
 	const { isOpen, onOpen, onClose } = useDisclosure()
+	const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 	return (
 		<>
 			<Button leftIcon={<IoMdHelp />} colorScheme='gray' size='sm' variant='solid' onClick={onOpen}>
 				Help
 			</Button>
 
-			<Modal isOpen={isOpen} onClose={onClose} isCentered>
+			<Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior={scrollBehavior}>
 				<ModalOverlay />
 				<ModalContent>
 					<ModalCloseButton />
@@ -79,6 +80,7 @@ export function HelpModal() {
 export function AlgoModal() {
 	const [index, setIndex] = useState(0)
 	const { isOpen, onOpen, onClose } = useDisclosure()
+	const [scrollBehavior, setScrollBehavior] = React.useState('inside')
 	const algoList = [
 		{
 			title: 'Merge Sort',
@@ -117,7 +119,7 @@ export function AlgoModal() {
 		<>
 			<GenerateButton myClass='algoHelp' handleClick={onOpen} leftIcon = {<FaRegLightbulb/>}> Algorithm tips </GenerateButton>
 
-			<Modal isOpen={isOpen} onClose={onClose} isCentered>
+			<Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior={scrollBehavior}>
 				<ModalOverlay />
 				<ModalContent>
 					<ModalCloseButton/>
