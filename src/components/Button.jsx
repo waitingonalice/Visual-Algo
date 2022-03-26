@@ -7,7 +7,7 @@ export function GenerateButton(props) {
         <Button
             className={myClass}
             onClick={props.handleClick}
-            colorScheme='gray' size='md'
+            colorScheme='gray' size='sm'
             leftIcon={props.leftIcon}
             disabled = {props.disabled}
         >

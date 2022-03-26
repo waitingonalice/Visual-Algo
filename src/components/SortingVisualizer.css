@@ -1,11 +1,29 @@
-/* .array-container {
-  position: absolute;
-  top: 300px;
-} */
+.parent-container {
+    padding-top: 20px;
+}
+
+.array-container {
+    position: relative;
+    top: 200px;
+}
 
 .array-bar {
     border-radius: 5px 5px 0px 0px;
     display: inline-block;
-    width: 15px;
+    width: 10px;
     margin: 0px 1px;
+}
+.feature-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+@media (min-width: 360px) and (max-width: 500px) {
+    .feature-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .array-container {
+        top: 30px;
+    }
 }

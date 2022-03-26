@@ -2,7 +2,7 @@
     display: flex;
 } */
 .header {
-    padding: 16px;
+    margin: 16px;
 }
 
 .title {
@@ -25,4 +25,10 @@
     bottom: -250px;
     left: 0;
     right: 0;
+}
+
+@media (min-width: 360px) and (max-width: 500px) {
+    .footer {
+        bottom: -40px;
+    }
 }

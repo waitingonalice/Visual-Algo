@@ -5,8 +5,8 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 export function SortDropDownMenu(props) {
     return (
          <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} colorScheme = 'gray'>
-                Sorting Algorithms
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />} colorScheme = 'gray' size = {'sm'}>
+                Algorithms
             </MenuButton>
             <MenuList>
                 {props.children}

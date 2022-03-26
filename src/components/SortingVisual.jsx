@@ -5,11 +5,12 @@ import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
-import { MenuItem,Box, HStack, VStack } from '@chakra-ui/react';
+import { MenuItem, VStack } from '@chakra-ui/react';
 import { GenerateButton } from './Button.jsx';
 import { SortDropDownMenu } from './DropDownMenu.jsx';
 import { AlgoModal } from './Modal.jsx';
-import {MdQuiz} from "react-icons/md"
+import { MdQuiz } from "react-icons/md"
+
 const animationSpeedMs = 7;
 const primaryColor = "CornflowerBlue";
 const secondaryColor = "Aquamarine";
@@ -18,25 +19,36 @@ export function SortingVisual() {
     const [array, setArray] = useState(randomArray());
 
     //function that controls size of array based on window event listener
-    //effect invokes handleResize() once after every render to DOM 
-    useEffect(() => {
-        function handleResize() {
-            const numBars = array
-            if (window.innerWidth/25<=numBars.length-1) {
-                numBars.pop();
-                setArray([...numBars])
+    //effect invokes handleResize() function
+    // useEffect(() => {
+    //     function handleResize() {
+    //         const numBars = array
+    //         if (window.innerWidth/20<=numBars.length-1) {
+    //             numBars.pop();
+    //             setArray([...numBars])
                 
-            } else if (window.innerWidth / 10 >= numBars.length - 1) {
-                numBars.push(randomIntFromInterval(10, window.innerHeight / 2))
-                setArray([...numBars])
-               
-            }
-        }
-        window.addEventListener('resize', handleResize)
-        return () => window.removeEventListener("resize", handleResize)
-    }, [])
-      
-    //FROM: https://github.com/waitingonalice/Sorting-Visualizer-Tutorial/blob/master/src/sortingAlgorithms/sortingAlgorithms.js 
+    //         } else if (window.innerWidth / 20 >= numBars.length - 1) {
+    //             numBars.push(randomIntFromInterval(10, window.innerHeight / 2))
+    //             setArray([...numBars])
+    //         }
+    //     }
+    //     window.addEventListener('resize', handleResize)
+    //     return () => window.removeEventListener("resize", handleResize)
+    // }, [])
+    
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            handleReset();
+        })
+    },[])
+
+    
+    const handleReset = () => {
+        console.log('reset')
+        setArray(randomArray());
+    }
+    
+
     const handleMergeSort = () => {
         const animations = getMergeSortAnimations(array);
         for (let i = 0; i < animations.length; i++) {
@@ -131,51 +143,44 @@ export function SortingVisual() {
             }
         }
     }     
-    const refreshPage = () => {
-        window.location.reload(true);
-    }
-    const handleReset = () => {
-        console.log('reset')
-        setArray(randomArray());
-    }
+    
 
     return(
-        <>
-            <Box pt ='10'>
-                <VStack>
-                    <HStack spacing='30px'>
-                        
-                        <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reload Page</GenerateButton>
-                        <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
-                        
-                        <SortDropDownMenu>
-                            <MenuItem onClick={() => handleMergeSort()}> Merge Sort</MenuItem>
-                            <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
-                            <MenuItem onClick = {() => handleInsertionSort()}>Insertion Sort</MenuItem>
-                            <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
-                        </SortDropDownMenu>
-                        <AlgoModal />
-                        <GenerateButton leftIcon = {<MdQuiz/>}>Test Your Knowledge</GenerateButton>
-                    </HStack>
+        <div className='parent-container'>
+            <VStack>
+                <div className='feature-buttons'>
+                    <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reload Page</GenerateButton>
+                    <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
+                    
+                    <SortDropDownMenu>
+                        <MenuItem onClick={() => handleMergeSort()}> Merge Sort</MenuItem>
+                        <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
+                        <MenuItem onClick = {() => handleInsertionSort()}>Insertion Sort</MenuItem>
+                        <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
+                    </SortDropDownMenu>
+                    <AlgoModal />
+                    <GenerateButton leftIcon = {<MdQuiz/>}>Test Your Knowledge</GenerateButton>
+                </div>
 
-                    <Box pos = "relative" top = "200">
-                        {array.map((value, idx) => (
-                            <Box className="array-bar" 
-                                key={idx}
-                                style={{backgroundColor: primaryColor, height: `${value}px`}}> 
-                            </Box>
-                        ))}
-                    </Box>
-                </VStack>
-            </Box>
-        </>
-
+                <div className='array-container'>
+                    {array.map((value, idx) => (
+                        <div className="array-bar" 
+                            key={idx}
+                            style={{backgroundColor: primaryColor, height: `${value}px`}}> 
+                        </div>
+                    ))}
+                </div>
+            </VStack>
+        </div>
     )
+}
+const refreshPage = () => {
+    window.location.reload(true);
 }
 
 const randomArray = () => {
     const array = [];
-    for(let i = 0; i<(window.innerWidth-500)/16; i++){
+    for(let i = 0; i<(window.innerWidth)/16; i++){
         array.push(randomIntFromInterval(10,window.innerHeight/2));
     }
     return array;

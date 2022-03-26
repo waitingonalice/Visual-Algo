@@ -1,12 +1,10 @@
 import React from 'react';
 import "./app.css"
 import { SortingVisual } from './components/SortingVisual';
-import { VStack, Heading, IconButton, useColorMode, Box, Center} from '@chakra-ui/react'
+import { Heading, IconButton, useColorMode, Center} from '@chakra-ui/react'
 import { FaSun, FaMoon } from 'react-icons/fa'
 import { HelpModal } from './components/Modal'
-import { AlgoModal } from './components/Modal';
 import {BsGithub} from 'react-icons/bs'
-import { useEffect } from 'react';
 
 export default function App() {
 	const { colorMode, toggleColorMode } = useColorMode();
@@ -33,7 +31,7 @@ export default function App() {
 				<Heading className='title'>
 					Visual Algo
 				</Heading>
-				<SortingVisual />	
+				<SortingVisual />
 			</div>
 			<Center className='footer'>
 				<div className='links'>
