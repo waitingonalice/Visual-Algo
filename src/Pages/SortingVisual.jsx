@@ -5,17 +5,19 @@ import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
-import { MenuItem, VStack } from '@chakra-ui/react';
-import { GenerateButton } from './Button.jsx';
-import { SortDropDownMenu } from './DropDownMenu.jsx';
-import { AlgoModal } from './Modal.jsx';
+import { MenuItem, VStack, Heading } from '@chakra-ui/react';
+import { GenerateButton } from '../components/Button.jsx';
+import { SortDropDownMenu } from '../components/DropDownMenu.jsx';
+import { AlgoModal } from '../components/Modal.jsx';
 import { MdQuiz } from "react-icons/md"
+import {Link} from "react-router-dom"
+
 
 const animationSpeedMs = 7;
 const primaryColor = "CornflowerBlue";
 const secondaryColor = "Aquamarine";
 
-export function SortingVisual() {
+function SortingVisual() {
     const [array, setArray] = useState(randomArray());
 
     //function that controls size of array based on window event listener
@@ -44,7 +46,6 @@ export function SortingVisual() {
 
     
     const handleReset = () => {
-        console.log('reset')
         setArray(randomArray());
     }
     
@@ -145,9 +146,13 @@ export function SortingVisual() {
     }     
     
 
-    return(
+    return (
+        
         <div className='parent-container'>
             <VStack>
+                <Heading className='title'>
+                    Visual Algo
+                </Heading>
                 <div className='feature-buttons'>
                     <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reload Page</GenerateButton>
                     <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
@@ -159,7 +164,8 @@ export function SortingVisual() {
                         <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
                     </SortDropDownMenu>
                     <AlgoModal />
-                    <GenerateButton leftIcon = {<MdQuiz/>}>Test Your Knowledge</GenerateButton>
+                    <Link to ='/quiz'><GenerateButton leftIcon={<MdQuiz />}>Test Your Knowledge</GenerateButton></Link>
+                        
                 </div>
 
                 <div className='array-container'>
@@ -172,6 +178,8 @@ export function SortingVisual() {
                 </div>
             </VStack>
         </div>
+       
+        
     )
 }
 const refreshPage = () => {
