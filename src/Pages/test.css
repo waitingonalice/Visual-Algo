@@ -1,0 +1,16 @@
+.test-page {
+    margin: 20px;
+}
+.quiz-category,
+.username {
+    font-weight: bolder;
+    font-family: "Source Code Pro", monospace;
+}
+.username {
+    font-size: x-large;
+}
+.quiz-category {
+    font-size: large;
+    margin-top: 16px;
+    text-transform: uppercase;
+}

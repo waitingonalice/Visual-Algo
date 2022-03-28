@@ -1,5 +1,8 @@
 .title {
     margin-bottom: 10px;
+    font-family: "Source Code Pro", monospace;
+    font-size: xx-large;
+    font-weight: bolder;
 }
 .parent-container {
     padding-top: 20px;

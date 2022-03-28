@@ -30,7 +30,7 @@ export default function App() {
 		);
 	}
 	//fetch data from open trivia db, and checks if 
-	const fetchQuestions = async(category, difficulty) => {
+	const fetchQuestions = async(category="", difficulty="") => {
 		const { data } = await axios.get(`https://opentdb.com/api.php?amount=10&type=multiple${
 			
 			category && `&category=${category}`
@@ -49,7 +49,7 @@ export default function App() {
 				</div>
 				<div className='body'>
 					<Routes>
-						<Route path='/' element={<SortingVisual/>}/>
+						<Route path='/VisualAlgo' element={<SortingVisual/>}/>
 						<Route path='/quiz' element={
 							<Quiz
 								name = {name}

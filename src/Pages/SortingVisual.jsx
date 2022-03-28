@@ -150,9 +150,9 @@ function SortingVisual() {
         
         <div className='parent-container'>
             <VStack>
-                <Heading className='title'>
+                <div className='title'>
                     Visual Algo
-                </Heading>
+                </div>
                 <div className='feature-buttons'>
                     <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reload Page</GenerateButton>
                     <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>

@@ -2,13 +2,16 @@
     display: flex;
     position: relative;
     justify-content: center;
-    bottom: -100px;
+    bottom: -80px;
+    font-weight: bolder;
+    font-size: xx-large;
+    font-family: "Source Code Pro", monospace;
 }
 .select-settings-card {
     display: grid;
     /* border: black 1px solid; */
     position: relative;
-    bottom: -300px;
+    bottom: -200px;
     height: 450px;
     width: 500px;
 }

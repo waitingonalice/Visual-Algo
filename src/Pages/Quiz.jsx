@@ -27,10 +27,7 @@ function Quiz({name,setName,fetchQuestions}) {
     return (
         
         <div className='parent-quiz-container'>
-            <div className='quiz-title'>
-                <Heading>Visual Algo Quiz</Heading>
-            </div>
-            
+            <div className='quiz-title'>Visual Algo Quiz</div>
             <Center>
                 <div className='select-settings-card'>
                     
@@ -54,7 +51,7 @@ function Quiz({name,setName,fetchQuestions}) {
                         {error && <ErrorMessage>Fill in all relevant fields</ErrorMessage>}
 
                         <div className='buttons'>
-                            <GenerateButton leftIcon={<FaHome />} handleClick={() => navigate('/')}>
+                            <GenerateButton leftIcon={<FaHome />} handleClick={() => navigate('/VisualAlgo')}>
                                 Back to home page
                             </GenerateButton>
                             <GenerateButton handleClick={() => {handleSubmit()}}>
