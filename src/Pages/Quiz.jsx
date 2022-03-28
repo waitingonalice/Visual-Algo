@@ -1,39 +1,72 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import { GenerateButton } from '../components/Button';
 import { FaHome } from 'react-icons/fa';
-import { Input, VStack,Select, Center, Heading } from '@chakra-ui/react';
+import { Input, VStack,Select, Center, Heading} from '@chakra-ui/react';
 import './quiz.css'
+import Categories from '../Data/data.js'
+import ErrorMessage from '../components/ErrorMessage';
 
-function Quiz() {
+function Quiz({name,setName,fetchQuestions}) {
+    const [category, setCategory] = useState("")
+    const [error, setError] = useState(false)
+    const [difficulty, setDifficulty] = useState("")
     let navigate = useNavigate();
 
-   
+    const handleSubmit = () => {
+        if (!name || !category || !difficulty) {
+            setError(true);
+            return;
+        } else {
+            setError(false);
+            fetchQuestions(category, difficulty);
+            navigate('/test');
+         }
+     }
+     
     return (
         
-        <div className='parent'>
-            <div className='title'>
+        <div className='parent-quiz-container'>
+            <div className='quiz-title'>
                 <Heading>Visual Algo Quiz</Heading>
             </div>
+            
             <Center>
                 <div className='select-settings-card'>
+                    
                     <VStack> 
-                        <Input className='input' placeholder='Enter Your Name'></Input>
-                        <Select placeholder='Select Topic'>
-                            <option value={'option1'}>Sorting Algorithms</option>
+                        <Input className='input' placeholder='Enter Your Name' onChange={(e) => setName(e.target.value)}/>
+                 
+                        <Select placeholder='Select Topic' onChange={(e) => setCategory(e.target.value)}> 
+                            {Categories.map((cat) => { 
+                                return <option key={cat.categories} value={cat.value}>
+                                    {cat.categories}
+                                </option>
+                            }) 
+                        }
+                        </Select> 
+                        <Select placeholder='Select Difficulty' onChange = {(e) => setDifficulty(e.target.value)}>
+                            <option key='Easy' value='easy' > Easy </option>
+                            <option key='Medium' value='medium' > Medium </option>
+                            <option key='Hard' value='hard' > Hard </option>
                         </Select>
+
+                        {error && <ErrorMessage>Fill in all relevant fields</ErrorMessage>}
+
+                        <div className='buttons'>
+                            <GenerateButton leftIcon={<FaHome />} handleClick={() => navigate('/')}>
+                                Back to home page
+                            </GenerateButton>
+                            <GenerateButton handleClick={() => {handleSubmit()}}>
+                                Proceed
+                            </GenerateButton>
+                        </div>
                     </VStack>
                 </div>
             </Center>
-             <div className='buttons'>
-                <GenerateButton leftIcon={<FaHome />} handleClick={() => navigate('/')}>
-                    Back to home page
-                </GenerateButton>
-                <GenerateButton handleClick={() => navigate('/')}>
-                    Proceed
-                </GenerateButton>
-            </div>
+             
         </div>
+        
     )
 }
 

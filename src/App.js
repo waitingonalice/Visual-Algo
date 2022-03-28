@@ -1,9 +1,11 @@
 import React from 'react';
 import ErrorPage from './Pages/ErrorPage';
-import "./app.css"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Test from './Pages/Test'
 import Quiz from './Pages/Quiz';
 import SortingVisual from './Pages/SortingVisual';
+import "./app.css"
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { IconButton, useColorMode, Center} from '@chakra-ui/react'
 import { FaSun, FaMoon } from 'react-icons/fa'
 import { HelpModal } from './components/Modal'
@@ -12,6 +14,7 @@ import {BsGithub} from 'react-icons/bs'
 
 export default function App() {
 	const { colorMode, toggleColorMode } = useColorMode();
+	const [name, setName] = useState("")
 	
 	function ColorMode() {
 		return (
@@ -24,6 +27,11 @@ export default function App() {
 				/>
 		);
 	}
+
+	const fetchQuestions = () => {
+		
+	}
+
 																																																																																																																																																																																 
 	return (
 		<Router>
@@ -35,7 +43,8 @@ export default function App() {
 				<div className='body'>
 					<Routes>
 						<Route path='/' element={<SortingVisual/>}/>
-						<Route path='/quiz' element={<Quiz />} />	
+						<Route path='/quiz' element={<Quiz name={name} setName={setName} fetchQuestions={ fetchQuestions }/>} />
+						<Route path='/test' element={<Test />} />
 						<Route path='*' element={<ErrorPage/>}/>
 					</Routes>											
 				</div>

@@ -1,6 +1,8 @@
-.title {
+.quiz-title {
     display: flex;
+    position: relative;
     justify-content: center;
+    bottom: -100px;
 }
 .select-settings-card {
     display: grid;
@@ -14,5 +16,15 @@
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
+}
+
+@media (max-width: 500px) and (min-width: 360px) {
+    .select-settings-card {
+        bottom: -150px;
+        height: 400px;
+    }
+    .quiz-title {
+        bottom: -50px;
+    }
 }
