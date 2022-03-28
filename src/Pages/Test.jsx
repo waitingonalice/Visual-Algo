@@ -15,47 +15,57 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
 
     //for every question, fetch its options
     useEffect(() => {
-        setOptions(question &&
-            [question[currentQuestion]?.correct_answer,
-            ...question[currentQuestion]?.incorrect_answers,]);
-    }, [currentQuestion, question])
+        setOptions(question && handleShuffle(
+                [question[currentQuestion].correct_answer,
+            ...question[currentQuestion].incorrect_answers,])
+            );
+    }, [currentQuestion,question])
     
+    function handleShuffle(options) {
+        return options.sort(() => Math.random()-0.5);
+    }
+
     function handleSelect() {
         
     }
 
-    function handleCheckAns(idx) {
-        setSelected(idx);
-        if (idx === question[currentQuestion].correct_answer) {
-            setScore(score + 1);
-            
-        }
+    function handleSelectIdx(idx) {
+        setSelected(idx)
         setError(false)
     }
 
     function handleNextClick() {
-        if (currentQuestion > 8) {
-           navigate('/results')
-        } else if (selected) {
-            setCurrentQuestion(currentQuestion + 1)
-            setSelected();
-        } else {
+        if (!selected) {
             setError(true)
+        
+        } else if (currentQuestion > 8) {
+                navigate('/results')
+            
+        } else if (selected === question[currentQuestion].correct_answer) {
+            setError(false)
+            setScore(score + 1);
+            setCurrentQuestion(currentQuestion + 1);
+            setSelected();
+            
+        } else if (selected !== question[currentQuestion].correct_answer) {
+            setError(false)
+            setScore(score + 0);
+            setCurrentQuestion(currentQuestion + 1);
+            setSelected();
         }
+       
     }
-
+    console.log(score)
     function handleQuit() {
         setQuestion();
-        
+        setCurrentQuestion(0);
+        setScore(score = 0);
     }
-
-    console.log(question)
-    
 
     return (
         <>
             <Link to='/quiz'>
-                <div className='quiz-title'>Visual Algo Quiz</div>
+                <div className='quiz-title' onClick={handleQuit}>Visual Algo Quiz</div>
             </Link>
             <div className='test-page'>
                 <Center>
@@ -69,16 +79,16 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
                         {question ?
                             <>
                                 <div className='quiz-category'>
-                                    {question[currentQuestion]?.category}
+                                    {question[currentQuestion].category}
                                     <div>
                                         Question: {currentQuestion + 1}
                                     </div>
                                 </div>
-                                    {question[currentQuestion]?.question}
+                                    {question[currentQuestion].question}
                                 <div className='options'>
                                     {options &&
                                         options.map((idx) => (
-                                            <QuizButton key ={idx} handleClick = {()=>handleCheckAns(idx)}>
+                                            <QuizButton key ={idx} handleClick = {()=>handleSelectIdx(idx)}>
                                                 {idx}
                                             </QuizButton>
                                     ))}

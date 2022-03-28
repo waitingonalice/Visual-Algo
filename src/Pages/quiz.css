@@ -23,7 +23,7 @@
 
 @media (max-width: 500px) and (min-width: 360px) {
     .select-settings-card {
-        bottom: -100px;
+        bottom: -130px;
         height: 400px;
     }
 }
