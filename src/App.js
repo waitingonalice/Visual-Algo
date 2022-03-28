@@ -10,12 +10,14 @@ import { IconButton, useColorMode, Center} from '@chakra-ui/react'
 import { FaSun, FaMoon } from 'react-icons/fa'
 import { HelpModal } from './components/Modal'
 import {BsGithub} from 'react-icons/bs'
+import axios from 'axios';
 
 
 export default function App() {
 	const { colorMode, toggleColorMode } = useColorMode();
-	const [name, setName] = useState("")
-	
+	const [name, setName] = useState("");
+	const [question, setQuestion] = useState();
+	const [score, setScore] = useState(0);
 	function ColorMode() {
 		return (
 			 <IconButton
@@ -27,11 +29,16 @@ export default function App() {
 				/>
 		);
 	}
-
-	const fetchQuestions = () => {
+	//fetch data from open trivia db, and checks if 
+	const fetchQuestions = async(category, difficulty) => {
+		const { data } = await axios.get(`https://opentdb.com/api.php?amount=10&type=multiple${
+			
+			category && `&category=${category}`
+			}${difficulty && `&difficulty=${difficulty}`}`
+		);
 		
+		setQuestion(data.results)
 	}
-
 																																																																																																																																																																																 
 	return (
 		<Router>
@@ -43,8 +50,21 @@ export default function App() {
 				<div className='body'>
 					<Routes>
 						<Route path='/' element={<SortingVisual/>}/>
-						<Route path='/quiz' element={<Quiz name={name} setName={setName} fetchQuestions={ fetchQuestions }/>} />
-						<Route path='/test' element={<Test />} />
+						<Route path='/quiz' element={
+							<Quiz
+								name = {name}
+								setName={setName}
+								fetchQuestions={fetchQuestions} />}
+							/>
+						
+						<Route path='/test' element={
+							<Test
+								question={question}
+								setQuestion={setQuestion}
+								name={name}
+								score={score}
+								setScore={setScore} />}
+							/>
 						<Route path='*' element={<ErrorPage/>}/>
 					</Routes>											
 				</div>

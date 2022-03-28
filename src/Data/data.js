@@ -1,5 +1,5 @@
 const Categories = [
-    { value: 1, categories: 'Computer Science' },
+    { value: 18, categories: 'Computer Science' },
 
 ]
 
