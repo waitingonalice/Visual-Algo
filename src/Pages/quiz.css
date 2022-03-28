@@ -2,14 +2,13 @@
     display: flex;
     position: relative;
     justify-content: center;
-    bottom: -80px;
     font-weight: bolder;
     font-size: xx-large;
     font-family: "Source Code Pro", monospace;
+    bottom: -10px;
 }
 .select-settings-card {
     display: grid;
-    /* border: black 1px solid; */
     position: relative;
     bottom: -200px;
     height: 450px;
@@ -24,10 +23,7 @@
 
 @media (max-width: 500px) and (min-width: 360px) {
     .select-settings-card {
-        bottom: -150px;
+        bottom: -100px;
         height: 400px;
-    }
-    .quiz-title {
-        bottom: -50px;
     }
 }

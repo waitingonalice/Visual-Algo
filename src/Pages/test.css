@@ -1,5 +1,16 @@
 .test-page {
-    margin: 20px;
+    margin: 16px;
+}
+.questions-container {
+    position: relative;
+    display: grid;
+    justify-content: center;
+    height: auto;
+    width: 500px;
+}
+.circular {
+    position: relative;
+    bottom: -50px;
 }
 .quiz-category,
 .username {
@@ -13,4 +24,15 @@
     font-size: large;
     margin-top: 16px;
     text-transform: uppercase;
+}
+
+.options {
+    display: grid;
+    gap: 10px;
+}
+
+.next-button {
+    position: absolute;
+    right: 0;
+    bottom: -50px;
 }

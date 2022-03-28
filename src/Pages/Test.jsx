@@ -2,8 +2,8 @@ import React, { useEffect,useState } from 'react'
 import './test.css'
 import ErrorMessage from '../components/ErrorMessage'
 import { CircularProgress, Center } from '@chakra-ui/react'
-import { GenerateButton } from '../components/Button'
-import {useNavigate} from 'react-router-dom'
+import { GenerateButton, QuizButton } from '../components/Button'
+import {useNavigate, Link} from 'react-router-dom'
 
 const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
 
@@ -28,8 +28,9 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
         setSelected(idx);
         if (idx === question[currentQuestion].correct_answer) {
             setScore(score + 1);
-            setError(false)
+            
         }
+        setError(false)
     }
 
     function handleNextClick() {
@@ -39,11 +40,12 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
             setCurrentQuestion(currentQuestion + 1)
             setSelected();
         } else {
-            setError("Please choose an option")
+            setError(true)
         }
     }
 
     function handleQuit() {
+        setQuestion();
         
     }
 
@@ -51,45 +53,49 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
     
 
     return (
-        <div className='test-page'>
-            <Center>
-                <div className='username'>
-                    Welcome, {name}
-                </div> 
-            </Center>
-            
-            <div className='questions-component'>
-                {question ?
-                    <>
-                        <div className='quiz-category'>
-                            {question[currentQuestion]?.category}
-                        </div>
-                        
-                        <div className='questions-card'>
-                            <div>
-                                Question: {currentQuestion+1}
-                            </div>
+        <>
+            <Link to='/quiz'>
+                <div className='quiz-title'>Visual Algo Quiz</div>
+            </Link>
+            <div className='test-page'>
+                <Center>
+                    <div className='username'>
+                        Welcome, {name}
+                    </div>
+                </Center>
 
-                            {question[currentQuestion]?.question}
-
-                            <div className='options'>
-                                {options &&
-                                    options.map((idx) => (
-                                        <GenerateButton handleClick = {handleCheckAns}>
-                                            {idx}
-                                        </GenerateButton>
-                                ))}
-                            {error && <ErrorMessage>{error}</ErrorMessage>}
-                            </div>
-                            <GenerateButton handleClick={handleNextClick}>Next</GenerateButton>
-                        </div>
-                        
-                    </>
-                    :
-                    <CircularProgress isIndeterminate color='blue.300' size='120px' />
-                }
-            </div>
-        </div>
+                <Center>
+                    <div className='questions-container'>
+                        {question ?
+                            <>
+                                <div className='quiz-category'>
+                                    {question[currentQuestion]?.category}
+                                    <div>
+                                        Question: {currentQuestion + 1}
+                                    </div>
+                                </div>
+                                    {question[currentQuestion]?.question}
+                                <div className='options'>
+                                    {options &&
+                                        options.map((idx) => (
+                                            <QuizButton key ={idx} handleClick = {()=>handleCheckAns(idx)}>
+                                                {idx}
+                                            </QuizButton>
+                                    ))}
+                                    {error && <ErrorMessage> Please choose an option </ErrorMessage>}
+                                </div>
+                                <div className='next-button'>
+                                    <GenerateButton handleClick={handleNextClick}>Next</GenerateButton>
+                                </div>
+                                
+                            </>                         
+                            :
+                        <div className='circular'><CircularProgress isIndeterminate color='blue.300' size='120px' /></div> 
+                        }
+                    </div>
+                </Center>
+                </div>
+        </>
     )
 }
 
