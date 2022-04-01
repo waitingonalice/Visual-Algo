@@ -13,6 +13,20 @@ function Quiz({name,setName,fetchQuestions}) {
     const [difficulty, setDifficulty] = useState("")
     let navigate = useNavigate();
 
+    const difficultyLevel = [
+        {
+            value: 'easy',
+            text: 'Easy'
+        },
+        {
+            value: 'medium',
+            text: 'Medium'
+        },
+        {
+            value: 'hard',
+            text: 'Hard'
+        }
+    ]
     const handleSubmit = () => {
         if (!name || !category || !difficulty) {
             setError(true);
@@ -42,10 +56,11 @@ function Quiz({name,setName,fetchQuestions}) {
                             }) 
                         }
                         </Select> 
-                        <Select placeholder='Select Difficulty' onChange = {(e) => setDifficulty(e.target.value)}>
-                            <option key='Easy' value='easy' > Easy </option>
-                            <option key='Medium' value='medium' > Medium </option>
-                            <option key='Hard' value='hard' > Hard </option>
+                        <Select placeholder='Select Difficulty' onChange={(e) => setDifficulty(e.target.value)}>
+                            {difficultyLevel.map((lvl) => {
+                                return <option key={lvl.value} value = {lvl.value}>{lvl.text} </option>
+                            }) }
+
                         </Select>
 
                         {error && <ErrorMessage>Fill in all relevant fields</ErrorMessage>}

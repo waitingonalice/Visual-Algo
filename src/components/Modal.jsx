@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { Modal, ModalOverlay, ModalCloseButton, ModalContent, ModalFooter, ModalBody, ModalHeader, HStack, Heading } from '@chakra-ui/react'
+import {algoList} from '../Data/data.js'
 import { Button, Text, Box } from '@chakra-ui/react'
 import { GenerateButton } from './Button'
 import { useDisclosure } from '@chakra-ui/react'
@@ -81,25 +82,7 @@ export function AlgoModal() {
 	const [index, setIndex] = useState(0)
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const [scrollBehavior, setScrollBehavior] = React.useState('inside')
-	const algoList = [
-		{
-			title: 'Merge Sort',
-			description: 'TBC'
-		},
-		{
-			title: 'Quick Sort',
-			description: 'TBC'
-		},
-		{
-			title: 'Bubble sort',
-			description: 'TBC'
-		
-		},
-		{
-			title: 'Insertion sort',
-			description: 'TBC'
-		}
-	]
+	
 	let hasPrev = index > 0
 	let hasNext = index < algoList.length-1
 		
@@ -117,9 +100,9 @@ export function AlgoModal() {
 
 	return (
 		<>
-			<GenerateButton myClass='algoHelp' handleClick={onOpen} leftIcon = {<FaRegLightbulb/>}> Algorithm tips </GenerateButton>
+			<GenerateButton myClass='algoHelp' handleClick={onOpen} leftIcon = {<FaRegLightbulb/>}> Algorithm Tips </GenerateButton>
 
-			<Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior={scrollBehavior}>
+			<Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior={scrollBehavior} size ={'xl'}>
 				<ModalOverlay />
 				<ModalContent>
 					<ModalCloseButton/>
@@ -130,7 +113,9 @@ export function AlgoModal() {
 						<Heading pb={3} fontSize= {16}>
 							Description {index + 1} of {algoList.length}
 						</Heading>
-						<Text>{algoDesc.description}</Text>
+						<Text>
+							{algoDesc.description}
+						</Text>
 					</ModalBody>
 					<ModalFooter>
 						<HStack spacing = '10px'>
@@ -146,3 +131,4 @@ export function AlgoModal() {
 	);
 
 }
+

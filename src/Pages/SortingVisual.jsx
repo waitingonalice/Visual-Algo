@@ -19,24 +19,6 @@ const secondaryColor = "Aquamarine";
 
 function SortingVisual() {
     const [array, setArray] = useState(randomArray());
-
-    //function that controls size of array based on window event listener
-    //effect invokes handleResize() function
-    // useEffect(() => {
-    //     function handleResize() {
-    //         const numBars = array
-    //         if (window.innerWidth/20<=numBars.length-1) {
-    //             numBars.pop();
-    //             setArray([...numBars])
-                
-    //         } else if (window.innerWidth / 20 >= numBars.length - 1) {
-    //             numBars.push(randomIntFromInterval(10, window.innerHeight / 2))
-    //             setArray([...numBars])
-    //         }
-    //     }
-    //     window.addEventListener('resize', handleResize)
-    //     return () => window.removeEventListener("resize", handleResize)
-    // }, [])
     
     useEffect(() => {
         window.addEventListener('resize', () => {
@@ -49,7 +31,7 @@ function SortingVisual() {
         setArray(randomArray());
     }
     
-
+//handleMergeSort() from: https://www.youtube.com/watch?v=pFXYym4Wbkc&t=2137s
     const handleMergeSort = () => {
         const animations = getMergeSortAnimations(array);
         for (let i = 0; i < animations.length; i++) {

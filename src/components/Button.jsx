@@ -16,9 +16,15 @@ export function GenerateButton(props) {
         ); 
 }
 
-export function QuizButton({children,handleClick}) {
+export function QuizButton({handleClick,myClass,disabled,children}) {
     return (
-        <button onClick={handleClick} className="quiz-button" type ='button'>
+        <button
+            onClick={handleClick}
+            type='button'
+            className={myClass}
+            disabled = {disabled}
+        >
+            
             {children}
         </button>
     )

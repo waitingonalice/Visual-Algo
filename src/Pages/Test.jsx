@@ -25,8 +25,16 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
         return options.sort(() => Math.random()-0.5);
     }
 
-    function handleSelect() {
-        
+    function handleAns(idx) {
+        if (selected === idx && selected === question[currentQuestion].correct_answer) {
+            return 'correct'
+            
+        } else if (selected === idx && selected !== question[currentQuestion].correct_answer) {
+            return 'incorrect'
+        } 
+        else {
+            return 'quiz-button'
+        }
     }
 
     function handleSelectIdx(idx) {
@@ -39,7 +47,7 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
             setError(true)
         
         } else if (currentQuestion > 8) {
-                navigate('/results')
+            navigate('/results')
             
         } else if (selected === question[currentQuestion].correct_answer) {
             setError(false)
@@ -55,13 +63,14 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
         }
        
     }
-    console.log(score)
+    
     function handleQuit() {
         setQuestion();
         setCurrentQuestion(0);
         setScore(score = 0);
     }
-
+    console.log(selected)
+    console.log(score)
     return (
         <>
             <Link to='/quiz'>
@@ -88,7 +97,12 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
                                 <div className='options'>
                                     {options &&
                                         options.map((idx) => (
-                                            <QuizButton key ={idx} handleClick = {()=>handleSelectIdx(idx)}>
+                                            <QuizButton
+                                                myClass={handleAns(idx)} 
+                                                key={idx}
+                                                handleClick={() => handleSelectIdx(idx)}
+                                                disabled = {selected}
+                                            >
                                                 {idx}
                                             </QuizButton>
                                     ))}

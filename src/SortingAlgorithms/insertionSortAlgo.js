@@ -17,24 +17,24 @@ function insertionSort(array,animations){
 
     for(let i = 1;i<array.length;i++){
         let temp = array[i];
-        let container = i;
-        animations.push([container, container - 1,true]);
-        animations.push([container, container - 1, true]);
+        let curr = i;
+        animations.push([curr, curr - 1,true]);
+        animations.push([curr, curr - 1, true]);
         
-        while(container > 0 && array[container - 1] > temp){
-            animations.push([container, container - 1,true]);
-            animations.push([container, container - 1,true]);
-            animations.push([container, array[container -1]]);
-            animations.push([container, array[container - 1]]);
+        while(curr > 0 && array[curr - 1] > temp){
+            animations.push([curr, curr - 1,true]);
+            animations.push([curr, curr - 1,true]);
+            animations.push([curr, array[curr -1]]);
+            animations.push([curr, array[curr - 1]]);
             
-            array[container] = array[container-1];
-            container--;
+            array[curr] = array[curr-1];
+            curr--;
             
         }
-        animations.push([container, temp]);
-        animations.push([container, temp]);
+        animations.push([curr, temp]);
+        animations.push([curr, temp]);
         
-        array[container] = temp;
+        array[curr] = temp;
     }
 
 } 

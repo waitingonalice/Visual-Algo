@@ -8,7 +8,7 @@ export function getMergeSortAnimations(array) {
     return animations; 
 }
 
-//swaps mainArray with supportArray during merge sort
+//from: https://www.youtube.com/watch?v=pFXYym4Wbkc&t=2137s
 function mergeSortHelper(mainArray, startIdx, endIdx, supportArray, animations){
     if(startIdx===endIdx){
         return;

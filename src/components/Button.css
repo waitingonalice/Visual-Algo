@@ -7,28 +7,43 @@
     outline: 0;
     cursor: pointer;
     position: relative;
-    background-color: rgba(255, 255, 255, 0);
-}
-
-.quiz-button::after {
-    content: "";
     background-color: #5150b1;
-    width: 100%;
-    z-index: -1;
-    position: absolute;
-    height: 100%;
-    top: 7px;
-    left: 7px;
-    transition: 0.2s;
+    transition: all 0.2s ease-out;
 }
 
-.quiz-button:hover::after {
-    top: 0px;
-    left: 0px;
+.quiz-button:hover,
+.quiz-button:focus {
+    background: #4aa5da;
+}
+
+.correct {
+    font-size: 20px;
+    font-weight: 200;
+    font-family: "Source Code Pro", monospace;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    cursor: pointer;
+    position: relative;
+    background-color: #359c43;
+}
+
+.incorrect {
+    font-size: 20px;
+    font-weight: 200;
+    font-family: "Source Code Pro", monospace;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    cursor: pointer;
+    position: relative;
+    background-color: #bd4021;
 }
 
 @media (max-width: 500px) and (min-width: 360px) {
-    .quiz-button {
+    .quiz-button,
+    .correct,
+    .incorrect {
         font-size: 15px;
     }
 }

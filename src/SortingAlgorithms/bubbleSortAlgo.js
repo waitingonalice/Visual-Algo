@@ -19,17 +19,17 @@ function bubbleSort(start,array,animations){
     let round = 0;
     while(!sorted){
         sorted = true;
-        for(let comparingElement = i; comparingElement < j-round; comparingElement++){
-            animations.push([comparingElement, comparingElement + 1, true]); 
-            animations.push([comparingElement, comparingElement + 1, true]); 
+        for(let x = i; x < j-round; x++){
+            animations.push([x, x + 1, true]); 
+            animations.push([x, x + 1, true]); 
             
-            if(array[comparingElement]>array[comparingElement+1]){
-                animations.push([comparingElement, array[comparingElement + 1]]);
-                animations.push([comparingElement + 1, array[comparingElement]]);
+            if(array[x]>array[x+1]){
+                animations.push([x, array[x + 1]]);
+                animations.push([x + 1, array[x]]);
                 
-                let temp = array[comparingElement];
-                array[comparingElement] = array[comparingElement + 1];
-                array[comparingElement + 1] = temp;
+                let temp = array[x];
+                array[x] = array[x + 1];
+                array[x + 1] = temp;
                 sorted = false;  
             }   
             
