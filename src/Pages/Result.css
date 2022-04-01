@@ -1,0 +1,39 @@
+.result-container {
+    position: relative;
+}
+
+.result-card {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: 10vh;
+    border: solid 1px;
+}
+
+.result-page-username,
+.result-page-result {
+    font-weight: bolder;
+    font-family: "Source Code Pro", monospace;
+    font-size: x-large;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.result-page-buttons {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+    bottom: 50px;
+    gap: 15px;
+}
+
+@media (max-width: 500px) {
+    .result-card {
+        width: 340px;
+        height: 300px;
+        margin-top: 8vh;
+    }
+}

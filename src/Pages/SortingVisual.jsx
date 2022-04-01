@@ -5,7 +5,7 @@ import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
-import { MenuItem, VStack, Heading } from '@chakra-ui/react';
+import { MenuItem, VStack } from '@chakra-ui/react';
 import { GenerateButton } from '../components/Button.jsx';
 import { SortDropDownMenu } from '../components/DropDownMenu.jsx';
 import { AlgoModal } from '../components/Modal.jsx';

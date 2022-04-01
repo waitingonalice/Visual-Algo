@@ -96,13 +96,15 @@ export function AlgoModal() {
 			setIndex(index-1)
 		}
 	}
+	
+    
 	let algoDesc = algoList[index]
-
+	console.log(algoDesc)
 	return (
 		<>
 			<GenerateButton myClass='algoHelp' handleClick={onOpen} leftIcon = {<FaRegLightbulb/>}> Algorithm Tips </GenerateButton>
 
-			<Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior={scrollBehavior} size ={'xl'}>
+			<Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior={scrollBehavior} size ={'xl'} key ={algoDesc.id}>
 				<ModalOverlay />
 				<ModalContent>
 					<ModalCloseButton/>
@@ -113,9 +115,9 @@ export function AlgoModal() {
 						<Heading pb={3} fontSize= {16}>
 							Description {index + 1} of {algoList.length}
 						</Heading>
-						<Text>
+						<div>
 							{algoDesc.description}
-						</Text>
+						</div>
 					</ModalBody>
 					<ModalFooter>
 						<HStack spacing = '10px'>

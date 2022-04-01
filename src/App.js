@@ -2,6 +2,7 @@ import React from 'react';
 import ErrorPage from './Pages/ErrorPage';
 import Test from './Pages/Test'
 import Quiz from './Pages/Quiz';
+import Result from './Pages/Result'
 import SortingVisual from './Pages/SortingVisual';
 import "./app.css"
 import { useState } from 'react';
@@ -18,6 +19,8 @@ export default function App() {
 	const [name, setName] = useState("");
 	const [question, setQuestion] = useState();
 	const [score, setScore] = useState(0);
+	
+
 	function ColorMode() {
 		return (
 			 <IconButton
@@ -39,7 +42,8 @@ export default function App() {
 		
 		setQuestion(data.results)
 	}
-																																																																																																																																																																																 
+
+																																																																																																																																																																															 
 	return (
 		<Router>
 			<div className='main'>
@@ -54,8 +58,9 @@ export default function App() {
 							<Quiz
 								name = {name}
 								setName={setName}
-								fetchQuestions={fetchQuestions} />}
-							/>
+								fetchQuestions={fetchQuestions}
+							/>}
+						/>
 						
 						<Route path='/test' element={
 							<Test
@@ -63,8 +68,20 @@ export default function App() {
 								setQuestion={setQuestion}
 								name={name}
 								score={score}
-								setScore={setScore} />}
-							/>
+								setScore={setScore}
+							/>}
+						/>
+						
+						<Route path='/results' element={
+							<Result
+								name={name}
+								score={score}
+								setScore={setScore}
+								question={question}
+								setQuestion={setQuestion}
+							/>}
+						/>
+						
 						<Route path='*' element={<ErrorPage/>}/>
 					</Routes>											
 				</div>

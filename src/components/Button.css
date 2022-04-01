@@ -16,6 +16,10 @@
     background: #4aa5da;
 }
 
+.quiz-button:disabled {
+    background-color: #cccccc;
+}
+
 .correct {
     font-size: 20px;
     font-weight: 200;

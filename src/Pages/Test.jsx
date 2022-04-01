@@ -5,8 +5,7 @@ import { CircularProgress, Center } from '@chakra-ui/react'
 import { GenerateButton, QuizButton } from '../components/Button'
 import {useNavigate, Link} from 'react-router-dom'
 
-const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
-
+const Test = ({ question, setQuestion, name, score=0, setScore }) => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [options, setOptions] = useState();
     const [error, setError] = useState(false)
@@ -25,7 +24,7 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
         return options.sort(() => Math.random()-0.5);
     }
 
-    function handleAns(idx) {
+    function handleCheckAns(idx) {
         if (selected === idx && selected === question[currentQuestion].correct_answer) {
             return 'correct'
             
@@ -67,10 +66,10 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
     function handleQuit() {
         setQuestion();
         setCurrentQuestion(0);
-        setScore(score = 0);
+        setScore();
     }
-    console.log(selected)
     console.log(score)
+    
     return (
         <>
             <Link to='/quiz'>
@@ -98,7 +97,7 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
                                     {options &&
                                         options.map((idx) => (
                                             <QuizButton
-                                                myClass={handleAns(idx)} 
+                                                myClass={handleCheckAns(idx)} 
                                                 key={idx}
                                                 handleClick={() => handleSelectIdx(idx)}
                                                 disabled = {selected}

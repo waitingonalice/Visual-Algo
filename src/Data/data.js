@@ -2,7 +2,6 @@ const Categories = [
     { value: 18, categories: 'Computer Science' },
 
 ]
-
 let quickSortText = 
 	[
 		'Quicksort is a divide and conquer algorithm that is regarded as the best sorting algorithm.', <br />,<br/>,
@@ -50,25 +49,30 @@ let insertionSortText =
 		'Worst case time complexity: O(n^2)'
 		
     ]
+
     
 export const algoList = [
-		{
-			title: 'Merge Sort',
-			description: mergeSortText
+	{	
+		id: 1,
+		title: 'Merge Sort',
+		description: mergeSortText
+	},
+	{
+		id: 2,
+		title: 'Quick Sort',
+		description: quickSortText
 		},
-		{
-			title: 'Quick Sort',
-			description: quickSortText
-		},
-		{
-			title: 'Bubble sort',
-			description: bubbleSortText
+	{
+		id: 3,
+		title: 'Bubble sort',
+		description: bubbleSortText
 		
-		},
-		{
-			title: 'Insertion sort',
-			description: insertionSortText
-		}
+	},
+	{
+		id: 4,
+		title: 'Insertion sort',
+		description: insertionSortText
+	}
 ]
     
 

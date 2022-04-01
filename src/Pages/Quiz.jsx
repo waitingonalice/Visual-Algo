@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import { GenerateButton } from '../components/Button';
 import { FaHome } from 'react-icons/fa';
-import { Input, VStack,Select, Center, Heading} from '@chakra-ui/react';
+import { Input, VStack,Select, Center} from '@chakra-ui/react';
 import './quiz.css'
 import Categories from '../Data/data.js'
 import ErrorMessage from '../components/ErrorMessage';
