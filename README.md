@@ -1,4 +1,4 @@
-This project was a school project developed with React in an attempt to display how algorithms interact with a certain dataset. 
+This was a school project developed with React in an attempt to display how algorithms interact with a certain dataset. 
 
 GitHub pages live website here: https://waitingonalice.github.io/Visual-Algo/ 
 
