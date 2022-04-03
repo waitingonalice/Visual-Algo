@@ -45,7 +45,7 @@ export default function App() {
 
 																																																																																																																																																																															 
 	return (
-		<Router>
+		<Router basename='Visual-Algo'>
 			<div className='main'>
 				<div className='header'>
 					<HelpModal/>
@@ -53,7 +53,7 @@ export default function App() {
 				</div>
 				<div className='body'>
 					<Routes>
-						<Route path='/Visual-Algo' element={<SortingVisual/>}/>
+						<Route path='/' element={<SortingVisual/>}/>
 						<Route path='/quiz' element={
 							<Quiz
 								name = {name}
