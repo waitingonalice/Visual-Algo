@@ -47,9 +47,6 @@ const Result = ({name, score, setScore, question, setQuestion}) => {
                         </Link>
 
                     </div>
-                
-
-                
             </div>         
 
         </div>
