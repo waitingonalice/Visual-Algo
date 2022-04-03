@@ -28,7 +28,7 @@ let mergeSortText =
 let bubbleSortText = 
 	[
 		'Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.', <br />, <br />,
-		'Use Cases: Bubble sort is a very simple algorithm to implement that is often used for very small data sets. Insertion sort is often used in place of bubble sort because of its similarities in complexity and is slightly faster. One advantage bubble sort has over other more complex algorithms is that it has the ability to detect whether data is sorted efficiently or not.', <br />,<br />,
+		'Use Cases: Bubble sort is a very simple algorithm to implement that is often used for very small data sets. Insertion sort is often used in place of bubble sort because of its similarities in complexity and is slightly faster. One advantage bubble sort has over other more complex algorithms is that it has the ability to detect whether data is sorted efficiently.', <br />,<br />,
 		'Algorithm Steps:', <br />,<br />,
 		'Step 1: Start with first element and checks adjacent element', <br />,
 		'Step 2: If current element is in wrong order of adjacent element, swap', <br />, <br />,
