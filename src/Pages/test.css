@@ -21,10 +21,25 @@
     font-size: x-large;
 }
 .quiz-category {
+    display:block;
+    flex-direction: column;
     font-size: large;
     margin-top: 16px;
     text-transform: uppercase;
+    
 }
+
+.quiz-category .question{
+    font-size: medium;
+    text-transform: none;
+    font-weight: 500;
+}
+.quiz-category .difficulty{
+    
+    float: right;
+}
+
+
 
 .options {
     display: grid;

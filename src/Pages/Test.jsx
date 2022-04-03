@@ -87,12 +87,11 @@ const Test = ({ question, setQuestion, name, score=0, setScore }) => {
                         {question ?
                             <>
                                 <div className='quiz-category'>
-                                    {question[currentQuestion].category}
-                                    <div>
-                                        Question: {currentQuestion + 1}
-                                    </div>
+                                    <span className='difficulty'>Difficulty: {question[currentQuestion].difficulty}</span>
+                                    <span>{question[currentQuestion].category}</span>
+                                    <div>Question: {currentQuestion + 1}</div>
+                                    <span className='question'>{question[currentQuestion].question}</span>
                                 </div>
-                                    {question[currentQuestion].question}
                                 <div className='options'>
                                     {options &&
                                         options.map((idx) => (
