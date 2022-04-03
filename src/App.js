@@ -53,7 +53,7 @@ export default function App() {
 				</div>
 				<div className='body'>
 					<Routes>
-						<Route path='/' element={<SortingVisual/>}/>
+						<Route path='/VisualAlgo' element={<SortingVisual/>}/>
 						<Route path='/quiz' element={
 							<Quiz
 								name = {name}
