@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/VisualAlgo/static/css/main.59cb4560.chunk.css",
-    "main.js": "/VisualAlgo/static/js/main.fed5e91f.chunk.js",
-    "main.js.map": "/VisualAlgo/static/js/main.fed5e91f.chunk.js.map",
-    "runtime-main.js": "/VisualAlgo/static/js/runtime-main.deb9c798.js",
-    "runtime-main.js.map": "/VisualAlgo/static/js/runtime-main.deb9c798.js.map",
-    "static/js/2.77cf73d7.chunk.js": "/VisualAlgo/static/js/2.77cf73d7.chunk.js",
-    "static/js/2.77cf73d7.chunk.js.map": "/VisualAlgo/static/js/2.77cf73d7.chunk.js.map",
-    "index.html": "/VisualAlgo/index.html",
-    "static/css/main.59cb4560.chunk.css.map": "/VisualAlgo/static/css/main.59cb4560.chunk.css.map",
-    "static/js/2.77cf73d7.chunk.js.LICENSE.txt": "/VisualAlgo/static/js/2.77cf73d7.chunk.js.LICENSE.txt"
+    "main.css": "/Visual/static/css/main.59cb4560.chunk.css",
+    "main.js": "/Visual/static/js/main.92ba2fb8.chunk.js",
+    "main.js.map": "/Visual/static/js/main.92ba2fb8.chunk.js.map",
+    "runtime-main.js": "/Visual/static/js/runtime-main.daba626b.js",
+    "runtime-main.js.map": "/Visual/static/js/runtime-main.daba626b.js.map",
+    "static/js/2.77cf73d7.chunk.js": "/Visual/static/js/2.77cf73d7.chunk.js",
+    "static/js/2.77cf73d7.chunk.js.map": "/Visual/static/js/2.77cf73d7.chunk.js.map",
+    "index.html": "/Visual/index.html",
+    "static/css/main.59cb4560.chunk.css.map": "/Visual/static/css/main.59cb4560.chunk.css.map",
+    "static/js/2.77cf73d7.chunk.js.LICENSE.txt": "/Visual/static/js/2.77cf73d7.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.deb9c798.js",
+    "static/js/runtime-main.daba626b.js",
     "static/js/2.77cf73d7.chunk.js",
     "static/css/main.59cb4560.chunk.css",
-    "static/js/main.fed5e91f.chunk.js"
+    "static/js/main.92ba2fb8.chunk.js"
   ]
 }
