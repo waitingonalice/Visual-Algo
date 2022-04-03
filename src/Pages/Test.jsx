@@ -88,9 +88,9 @@ const Test = ({ question, setQuestion, name, score=0, setScore }) => {
                             <>
                                 <div className='quiz-category'>
                                     <span className='difficulty'>Difficulty: {question[currentQuestion].difficulty}</span>
-                                    <span>{question[currentQuestion].category}</span>
+                                    <div>{question[currentQuestion].category}</div>
                                     <div>Question: {currentQuestion + 1}</div>
-                                    <span className='question'>{question[currentQuestion].question}</span>
+                                    <div className='question'>{question[currentQuestion].question}</div>
                                 </div>
                                 <div className='options'>
                                     {options &&

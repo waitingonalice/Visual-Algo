@@ -44,10 +44,10 @@
     background-color: #bd4021;
 }
 
-@media (max-width: 500px) and (min-width: 360px) {
+@media (max-width: 500px) {
     .quiz-button,
     .correct,
     .incorrect {
-        font-size: 15px;
+        font-size: 13px;
     }
 }

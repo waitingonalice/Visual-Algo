@@ -99,12 +99,11 @@ export function AlgoModal() {
 	
     
 	let algoDesc = algoList[index]
-	console.log(algoDesc)
 	return (
 		<>
 			<GenerateButton myClass='algoHelp' handleClick={onOpen} leftIcon = {<FaRegLightbulb/>}> Algorithm Tips </GenerateButton>
 
-			<Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior={scrollBehavior} size ={'xl'} key ={algoDesc.id}>
+			<Modal isOpen={isOpen} onClose={onClose} isCentered scrollBehavior={scrollBehavior} size ={'lg'} key ={algoDesc.id}>
 				<ModalOverlay />
 				<ModalContent>
 					<ModalCloseButton/>

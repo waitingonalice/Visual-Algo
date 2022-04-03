@@ -21,12 +21,10 @@
     font-size: x-large;
 }
 .quiz-category {
-    display:block;
-    flex-direction: column;
     font-size: large;
     margin-top: 16px;
     text-transform: uppercase;
-    
+    width: 500px   
 }
 
 .quiz-category .question{
@@ -35,11 +33,9 @@
     font-weight: 500;
 }
 .quiz-category .difficulty{
-    
+    display: block;
     float: right;
 }
-
-
 
 .options {
     display: grid;
@@ -50,4 +46,13 @@
     position: absolute;
     right: 0;
     bottom: -50px;
+}
+
+@media (max-width: 500px){
+    .quiz-category{
+        width: auto;
+        display: flex;
+        flex-direction: column;
+    }
+   
 }
