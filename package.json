@@ -2,7 +2,7 @@
   "name": "visual",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://waitingonalice.github.io/Visual",
+  "homepage": "http://waitingonalice.github.io/Visual-Algo",
   "dependencies": {
     "@chakra-ui/icons": "^1.1.1",
     "@chakra-ui/react": "^1.7.4",

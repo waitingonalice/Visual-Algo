@@ -66,7 +66,7 @@ function Quiz({name,setName,fetchQuestions}) {
                         {error && <ErrorMessage>Fill in all relevant fields</ErrorMessage>}
 
                         <div className='buttons'>
-                            <GenerateButton leftIcon={<FaHome />} handleClick={() => navigate('/Visual')}>
+                            <GenerateButton leftIcon={<FaHome />} handleClick={() => navigate('/Visual-Algo')}>
                                 Back to home page
                             </GenerateButton>
                             <GenerateButton handleClick={() => {handleSubmit()}}>
