@@ -6,7 +6,7 @@ function ErrorPage() {
   let navigate = useNavigate();
   return (
     <div>
-		<GenerateButton handleClick = {()=>navigate('/VisualAlgo')}>
+		<GenerateButton handleClick = {()=>navigate('/')}>
 			Back to Home page
 		</GenerateButton>
 		<div>

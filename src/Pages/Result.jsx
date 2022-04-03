@@ -36,7 +36,7 @@ const Result = ({name, score, setScore, question, setQuestion}) => {
                 </div>
                
                     <div className='result-page-buttons'>
-                        <GenerateButton leftIcon={<FaHome />} handleClick={() => navigate('/Visual-Algo')}>
+                        <GenerateButton leftIcon={<FaHome />} handleClick={() => navigate('/')}>
                             Back to home page
                         </GenerateButton>
                     
