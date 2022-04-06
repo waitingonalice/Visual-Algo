@@ -5,9 +5,9 @@ import { getMergeSortAnimations } from '../SortingAlgorithms/mergeSortAlgo.js';
 import { getBubbleSortAnimations } from '../SortingAlgorithms/bubbleSortAlgo';
 import { getInsertionSortAnimations } from '../SortingAlgorithms/insertionSortAlgo';
 import { getQuickSortAnimations } from '../SortingAlgorithms/quickSortAlgo';
-import { MenuItem, VStack } from '@chakra-ui/react';
+import { MenuItem, VStack, Menu, MenuButton, MenuList, Button } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import { GenerateButton } from '../components/Button.jsx';
-import { SortDropDownMenu } from '../components/DropDownMenu.jsx';
 import { AlgoModal } from '../components/Modal.jsx';
 import { MdQuiz } from "react-icons/md"
 import {Link} from "react-router-dom"
@@ -19,14 +19,23 @@ const secondaryColor = "Aquamarine";
 
 function SortingVisual() {
     const [array, setArray] = useState(randomArray());
+    const [trigger, setTrigger] = useState(false)
     
     useEffect(() => {
         window.addEventListener('resize', () => {
             handleReset();
         })
-    },[])
-
+    }, [])
     
+    useEffect(() => {
+        if (trigger) {
+            setTimeout(() => {
+                setTrigger(false)
+            },6000)
+        }
+    }, [trigger])
+                
+    console.log(trigger)
     const handleReset = () => {
         setArray(randomArray());
     }
@@ -56,6 +65,7 @@ function SortingVisual() {
         }
     }
     const handleBubbleSort = () => {
+        setTrigger(true)
         const animations = getBubbleSortAnimations(array);
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -80,6 +90,7 @@ function SortingVisual() {
     }
         
     const handleInsertionSort = () => {
+        setTrigger(true)
         const animations = getInsertionSortAnimations(array);
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -104,6 +115,7 @@ function SortingVisual() {
     }
                 
     const handleQuickSort = () => {
+        setTrigger(true)
         const animations = getQuickSortAnimations(array);
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
@@ -125,11 +137,10 @@ function SortingVisual() {
                 }, i * animationSpeedMs);
             }
         }
-    }     
-    
+    } 
+    console.log(array)
 
     return (
-        
         <div className='parent-container'>
             <VStack>
                 <div className='title'>
@@ -138,13 +149,26 @@ function SortingVisual() {
                 <div className='feature-buttons'>
                     <GenerateButton myClass ="resetArray" handleClick = {()=>refreshPage()}>Reload Page</GenerateButton>
                     <GenerateButton myClass ="generateNewArray" handleClick = {()=>handleReset()}>Generate New Array</GenerateButton>
+                    <Menu>
+                        <MenuButton
+                            id='MenuButton'
+                            as={Button}
+                            rightIcon={<ChevronDownIcon />}
+                            colorScheme='gray'
+                            size={'sm'}
+                            disabled={trigger}
+                        >
+                            Algorithms
+                        </MenuButton>
+                        <MenuList>
+                            <MenuItem onClick = {() => handleMergeSort()}> Merge Sort</MenuItem>
+                            <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
+                            <MenuItem onClick = {() => handleInsertionSort()}>Insertion Sort</MenuItem>
+                            <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
+                        </MenuList>
+                    </Menu>
                     
-                    <SortDropDownMenu>
-                        <MenuItem onClick={() => handleMergeSort()}> Merge Sort</MenuItem>
-                        <MenuItem onClick = {() => handleQuickSort()}>Quick Sort</MenuItem>
-                        <MenuItem onClick = {() => handleInsertionSort()}>Insertion Sort</MenuItem>
-                        <MenuItem onClick = {() => handleBubbleSort()}>Bubble Sort</MenuItem>
-                    </SortDropDownMenu>
+                   
                     <AlgoModal />
                     <Link to ='/quiz'><GenerateButton leftIcon={<MdQuiz />}>Test Your Knowledge</GenerateButton></Link>
                         
