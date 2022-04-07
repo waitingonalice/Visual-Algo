@@ -78,7 +78,6 @@ const Test = ({ question, setQuestion, name, score = 0, setScore }) => {
         setCurrentQuestion(0);
         setScore();
     }
-    console.log(score);
 
     return (
         <>
