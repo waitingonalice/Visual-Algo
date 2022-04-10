@@ -41,7 +41,6 @@ function SortingVisual() {
         }
     }, [trigger]);
 
-    console.log(trigger);
     const handleReset = () => {
         setTrigger(false);
         setArray(randomArray());

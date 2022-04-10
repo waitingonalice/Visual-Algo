@@ -30,8 +30,9 @@ export default function App() {
             />
         );
     }
-    //fetch data from open trivia db, and checks if
-    const fetchQuestions = async (category = "", difficulty = "") => {
+    //fetch data from open trivia db
+    //From: https://github.com/piyush-eon/Reactjs-Quiz-App/blob/master/src/App.js
+    const fetch = async (category, difficulty) => {
         const { data } = await axios.get(
             `https://opentdb.com/api.php?amount=10&type=multiple${
                 category && `&category=${category}`
@@ -57,7 +58,7 @@ export default function App() {
                                 <Quiz
                                     name={name}
                                     setName={setName}
-                                    fetchQuestions={fetchQuestions}
+                                    fetch={fetch}
                                 />
                             }
                         />

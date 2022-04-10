@@ -7,7 +7,7 @@ import "./quiz.css";
 import Categories from "../Data/data.js";
 import ErrorMessage from "../components/ErrorMessage";
 
-function Quiz({ name, setName, fetchQuestions }) {
+function Quiz({ name, setName, fetch }) {
     const [category, setCategory] = useState("");
     const [error, setError] = useState(false);
     const [difficulty, setDifficulty] = useState("");
@@ -27,13 +27,14 @@ function Quiz({ name, setName, fetchQuestions }) {
             text: "Hard",
         },
     ];
+    //From: https://github.com/piyush-eon/Reactjs-Quiz-App/blob/master/src/Pages/Home/Home.js
     const handleSubmit = () => {
         if (!name || !category || !difficulty) {
             setError(true);
             return;
         } else {
             setError(false);
-            fetchQuestions(category, difficulty);
+            fetch(category, difficulty);
             navigate("/test");
         }
     };

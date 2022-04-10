@@ -23,8 +23,14 @@
     right: 0;
 }
 
-@media (min-width: 360px) and (max-width: 500px) {
+@media (max-width: 500px) {
     .footer {
-        bottom: -40px;
+        bottom: -50px;
+    }
+}
+
+@media (max-width: 730px) {
+    .footer {
+        bottom: -200px;
     }
 }
