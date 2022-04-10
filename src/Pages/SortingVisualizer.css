@@ -30,11 +30,11 @@
         flex-wrap: wrap;
     }
     .array-container {
-        top: 30px;
+        top: 20px;
     }
 }
 
-@media (max-width: 730px) {
+@media (max-width: 730px) and (min-width: 500px){
     .feature-buttons {
         justify-content: center;
         flex-wrap: wrap;

@@ -37,7 +37,7 @@ function SortingVisual() {
         if (trigger) {
             setTimeout(() => {
                 setTrigger(false);
-            }, 6000);
+            }, 8000);
         }
     }, [trigger]);
 

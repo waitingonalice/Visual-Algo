@@ -25,11 +25,11 @@
 
 @media (max-width: 500px) {
     .footer {
-        bottom: -50px;
+        bottom: -30px;
     }
 }
 
-@media (max-width: 730px) {
+@media (max-width: 730px) and (min-width: 500px) {
     .footer {
         bottom: -200px;
     }
