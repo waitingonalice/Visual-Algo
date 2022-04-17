@@ -12,6 +12,7 @@ import {
     MenuButton,
     MenuList,
     Button,
+    Select,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { GenerateButton } from "../components/Button.jsx";
@@ -19,13 +20,14 @@ import { AlgoModal } from "../components/Modal.jsx";
 import { MdQuiz } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const animationSpeedMs = 7;
+// const animationSpeedMs = 50;
 const primaryColor = "CornflowerBlue";
 const secondaryColor = "Aquamarine";
 
 function SortingVisual() {
     const [array, setArray] = useState(randomArray());
     const [trigger, setTrigger] = useState(false);
+    const [animationSpeedMs, setAnimationSpeedMs] = useState(5);
 
     useEffect(() => {
         window.addEventListener("resize", () => {
@@ -37,7 +39,7 @@ function SortingVisual() {
         if (trigger) {
             setTimeout(() => {
                 setTrigger(false);
-            }, 8000);
+            }, 10000);
         }
     }, [trigger]);
 
@@ -146,70 +148,83 @@ function SortingVisual() {
     };
 
     return (
-        <div className="parent-container">
-            <VStack>
-                <div className="title">Visual Algo</div>
-                <div className="feature-buttons">
-                    <GenerateButton
-                        myClass="resetArray"
-                        handleClick={() => handleRefreshPage()}
+        <VStack>
+            <div className="title">Visual Algo</div>
+            <div className="feature-buttons">
+                <GenerateButton
+                    myClass="resetArray"
+                    handleClick={() => handleRefreshPage()}
+                >
+                    Reload Page
+                </GenerateButton>
+                <GenerateButton
+                    myClass="generateNewArray"
+                    handleClick={() => handleReset()}
+                >
+                    Generate New Array
+                </GenerateButton>
+
+                <Menu>
+                    <MenuButton
+                        id="MenuButton"
+                        as={Button}
+                        rightIcon={<ChevronDownIcon />}
+                        colorScheme="gray"
+                        size={"sm"}
+                        disabled={trigger}
                     >
-                        Reload Page
-                    </GenerateButton>
-                    <GenerateButton
-                        myClass="generateNewArray"
-                        handleClick={() => handleReset()}
+                        Algorithms
+                    </MenuButton>
+                    <MenuList>
+                        <MenuItem onClick={() => handleQuickSort()}>
+                            Quick Sort
+                        </MenuItem>
+                        <MenuItem onClick={() => handleInsertionSort()}>
+                            Insertion Sort
+                        </MenuItem>
+                        <MenuItem onClick={() => handleBubbleSort()}>
+                            Bubble Sort
+                        </MenuItem>
+                        <MenuItem onClick={() => handleMergeSort()}>
+                            Merge Sort
+                        </MenuItem>
+                    </MenuList>
+                </Menu>
+
+                <div className="select-speed">
+                    <Select
+                        size={"sm"}
+                        placeholder={"Speed"}
+                        variant="filled"
+                        isDisabled={trigger}
+                        onChange={(e) => setAnimationSpeedMs(e.target.value)}
                     >
-                        Generate New Array
-                    </GenerateButton>
-                    <Menu>
-                        <MenuButton
-                            id="MenuButton"
-                            as={Button}
-                            rightIcon={<ChevronDownIcon />}
-                            colorScheme="gray"
-                            size={"sm"}
-                            disabled={trigger}
-                        >
-                            Algorithms
-                        </MenuButton>
-                        <MenuList>
-                            <MenuItem onClick={() => handleQuickSort()}>
-                                Quick Sort
-                            </MenuItem>
-                            <MenuItem onClick={() => handleInsertionSort()}>
-                                Insertion Sort
-                            </MenuItem>
-                            <MenuItem onClick={() => handleBubbleSort()}>
-                                Bubble Sort
-                            </MenuItem>
-                            <MenuItem onClick={() => handleMergeSort()}>
-                                Merge Sort
-                            </MenuItem>
-                        </MenuList>
-                    </Menu>
-                    <AlgoModal />
-                    <Link to="/quiz">
-                        <GenerateButton leftIcon={<MdQuiz />}>
-                            Test Your Knowledge
-                        </GenerateButton>
-                    </Link>
+                        <option value={5}>5ms</option>
+                        <option value={50}>50ms</option>
+                        <option value={100}>100ms</option>
+                    </Select>
                 </div>
 
-                <div className="array-container">
-                    {array.map((value, idx) => (
-                        <div
-                            className="array-bar"
-                            key={idx}
-                            style={{
-                                backgroundColor: primaryColor,
-                                height: `${value}px`,
-                            }}
-                        ></div>
-                    ))}
-                </div>
-            </VStack>
-        </div>
+                <AlgoModal />
+                <Link to="/quiz">
+                    <GenerateButton leftIcon={<MdQuiz />}>
+                        Test Your Knowledge
+                    </GenerateButton>
+                </Link>
+            </div>
+            <div className="array-container">
+                {array.map((value, idx) => (
+                    <div
+                        className="array-bar"
+                        key={idx}
+                        style={{
+                            backgroundColor: primaryColor,
+                            height: `${value}px`,
+                        }}
+                    ></div>
+                ))}
+            </div>
+        </VStack>
     );
 }
 const handleRefreshPage = () => {

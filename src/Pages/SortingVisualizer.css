@@ -4,17 +4,15 @@
     font-size: xx-large;
     font-weight: bolder;
 }
-.parent-container {
-    padding-top: 20px;
-}
 
 .array-container {
     position: relative;
-    top: 200px;
+    top: 20vh;
+    border: 5px solid teal;
 }
 
 .array-bar {
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
     display: inline-block;
     width: 10px;
     margin: 0px 1px;
@@ -22,6 +20,11 @@
 .feature-buttons {
     display: flex;
     gap: 10px;
+    padding-top: 20px;
+    
+}
+.select-speed{
+    width: 100px;
 }
 
 @media (max-width: 500px) {
@@ -30,17 +33,17 @@
         flex-wrap: wrap;
     }
     .array-container {
-        top: 20px;
+        top: 2vh;
     }
 }
 
-@media (max-width: 730px) and (min-width: 500px){
+@media (max-width: 850px) and (min-width: 500px){
     .feature-buttons {
         justify-content: center;
         flex-wrap: wrap;
     }
     .array-container {
-        top:150px;
+        top:15vh;
     }
 
 }
